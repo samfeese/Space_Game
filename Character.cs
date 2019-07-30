@@ -6,51 +6,53 @@ namespace Space_Game
 {
     class Character
     {
-        public Character( int age, decimal money)
+       public string userName;
+       public int startAge;
+       public decimal startMoney;
+
+        public Character()
         {
-            SetName();
-            //SetCharacterClass(age);
-            SetStartMoney(age);
-        }
 
-        public string SetName()
+        }
+        public Character(string name, int userCharClass)
         {
-            Console.WriteLine("Please enter you character name: ");
-            var name = Console.ReadLine();
-
-            return name;
+            SetName(name);
+            SetCharacterClass(userCharClass);
+            
         }
-        public decimal SetStartMoney(int age)
-        {
-            decimal startMoney = 0;
-            if (age == 18)
-            {
-                startMoney = 100;
-                //SetCharacterClass("Beginer");
-            }
-            else if (age == 22)
-            {
-                startMoney = 200;
-               // SetCharacterClass("Itermediate");
-            }
-            else if (age == 26)
-            {
-                startMoney = 300;
-                //SetCharacterClass("Advanced");
-            }
-
-            return startMoney;
-        }
-
-
-        //public string SetCharacterClass(string n)
-        //{
-
-        //    var characterClass = n;
-
-        //    return characterClass;
-        //}
 
         
+        public string SetName(string name)
+        {
+            userName = name;
+            return userName;
+
+        }
+        
+
+        public (int, decimal) SetCharacterClass(int userCharClass)
+        {
+          
+            switch (userCharClass)
+            {
+                case 1:
+                    startAge = 18;
+                    startMoney = 100;
+                    break;
+                case 2:
+                    startAge = 22;
+                    startMoney = 200;
+                    break;
+                case 3:
+                    startAge = 26;
+                    startMoney = 300;
+                    break;
+                    
+            }
+            return (startAge, startMoney);
+           
+        }
+        
+
     }
 }
