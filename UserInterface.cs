@@ -33,14 +33,28 @@ namespace Space_Game
             Character c1 = new Character(name, userCharClass);
 
         }
-        //public (string, int, decimal) SetInfo()
-        //{
-        //    string userName = name;
+        public void PlanetPlacement()
+        {
+            Planet planet3 = new Planet();
+            Planet planet4 = new Planet();
+            Planet planet5 = new Planet();
+
+            (string, (double, double)) planetA = (planet3.planetName, planet3.planetCoordinate);
+
+            (string, (double, double)) planetB = (planet4.planetName, planet4.planetCoordinate);
+
+            (string, (double, double)) planetC = (planet5.planetName, planet5.planetCoordinate);
+
+            Console.WriteLine($"The first generated planet is {planetA.Item1} and is at coordinates {planetA.Item2}");
+
+            double howFar = planet3.Distance((planetA.Item2), (planetB.Item2));
+
+            Console.WriteLine($"{howFar}");
 
 
-        //    return (userName, currentAge, currentMoney);
 
-        //}
+
+        }
 
 
 
@@ -53,4 +67,4 @@ namespace Space_Game
 
 
     }
-}
+    }

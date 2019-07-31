@@ -18,10 +18,11 @@ namespace Space_Game
 
             Console.WriteLine($"\n\nHEY {ui.name}");
 
-
+            ui.PlanetPlacement();
 
           
 
         }
+        
     }
 }
