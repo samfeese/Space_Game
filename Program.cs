@@ -11,22 +11,19 @@ namespace Space_Game
 
             ShipArt display = new ShipArt();
             Dialog talk = new Dialog();
-            Planet coordinates = new Planet();
-
-            //display.ShipArtVertical();
-            //Thread.Sleep(1000);
-            //Console.Clear();
-
-            //display.ShipArtHorz();
-            talk.StartGameDialog();
             
-            (double, double) p = coordinates.PlanetAplha();
-            double alphaX = p.Item1;
-            double alphaY = p.Item2;
 
+            display.ShipArtVertical();
+            Thread.Sleep(1000);
+            Console.Clear();
 
-            Console.WriteLine($"Alpha's Coordinates are ({alphaX}, {alphaY})");
+            // display.ShipArtHorz();
+            //talk.StartGameDialog();
+            talk.StartMove();
+            
+         
 
+            
            
 
 

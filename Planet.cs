@@ -6,13 +6,14 @@ namespace Space_Game
 {
     class Planet
     {
+
         public string planetName;
         public (double, double) planetCoordinate;
-
+        public (double, double) planetAlpha;
         public Planet()
         {
             //PlanetEarth();
-            //PlanetAplha();
+            PlanetAplha();
             PlanetNameGenerator();
             PlanetCoordinateGenerator();
         }
@@ -25,7 +26,7 @@ namespace Space_Game
            return (x, y);
         }
 
-        public (double, double) PlanetAplha()
+        public void PlanetAplha()
         {
             Random alphaAngle = new Random();
             double randomAngle = alphaAngle.Next(0, 359);
@@ -33,7 +34,7 @@ namespace Space_Game
 
             double x = PlanetEarth().Item1 + (Math.Cos(randomAngle) * 4.3);
             double y = PlanetEarth().Item2 + (Math.Sin(randomAngle) * 4.3);
-            return (x, y);
+            planetAlpha = (x, y);
         }
 
         public void PlanetNameGenerator()
@@ -47,7 +48,7 @@ namespace Space_Game
             string tempFirst = firstName[name1];
             string tempLast = lastName[name2];
 
-           planetName = tempFirst + " " + tempLast;
+            planetName = tempFirst + " " + tempLast;
            
             
         }
@@ -76,7 +77,7 @@ namespace Space_Game
             return distance;
 
         }
-
+        
 
     }
 }
