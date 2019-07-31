@@ -22,15 +22,14 @@ namespace Space_Game
         }
 
         
-        public string SetName(string name)
+        public void SetName(string name)
         {
             userName = name;
-            return userName;
-
+           
         }
         
 
-        public (int, decimal) SetCharacterClass(int userCharClass)
+        public void SetCharacterClass(int userCharClass)
         {
           
             switch (userCharClass)
@@ -49,8 +48,6 @@ namespace Space_Game
                     break;
                     
             }
-            return (startAge, startMoney);
-           
         }
         
 
