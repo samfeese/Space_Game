@@ -73,6 +73,10 @@ namespace Space_Game
         }
         public void ShipArtHorz()
         {
+            Console.WriteLine("You pull out your communicator and say, 'Scotty, one to beam up'");
+
+            Thread.Sleep(2000);
+
             int i = 0;
             string add = "  ";
             string a = "    ";
@@ -170,125 +174,14 @@ namespace Space_Game
             }
         }
 
-        //public void ShipArtHorz2()
-        //{
-        //    Console.Write("      ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("    ");
-        //    Console.WriteLine();
+        public void InventoryArt()
+        {
 
-        //    Console.Write("     ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("     ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("   ");
-        //    Console.WriteLine();
 
-        //    Console.Write("    ");
-        //    Console.BackgroundColor = ConsoleColor.Red;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("  ");
-        //    Console.WriteLine();
 
-        //    Console.Write("      ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("           ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("   ");
-        //    Console.WriteLine();
 
-        //    Console.Write("    ");
-        //    Console.BackgroundColor = ConsoleColor.Red;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("  ");
-        //    Console.WriteLine();
 
-        //    Console.Write("     ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("     ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("   ");
-        //    Console.WriteLine();
-
-        //    Console.Write("      ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("    ");
-        //    Console.WriteLine();
-        //}
-        //    public void ShipArtHorz3()
-        //{
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("    ");
-        //    Console.WriteLine();
-
-        //    Console.Write("       ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("     ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("   ");
-        //    Console.WriteLine();
-
-        //    Console.Write("      ");
-        //    Console.BackgroundColor = ConsoleColor.Red;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("  ");
-        //    Console.WriteLine();
-
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("           ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("   ");
-        //    Console.WriteLine();
-
-        //    Console.Write("      ");
-        //    Console.BackgroundColor = ConsoleColor.Red;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("  ");
-        //    Console.WriteLine();
-
-        //    Console.Write("       ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("     ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("   ");
-        //    Console.WriteLine();
-
-        //    Console.Write("        ");
-        //    Console.BackgroundColor = ConsoleColor.White;
-        //    Console.Write("  ");
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Write("    ");
-        //    Console.WriteLine();
-        //}
-
-        //    public void ShipArtHorz4() { }
-
-        //    public void ShipArtHorz5() { }
-
-        //    public void ShipArtHorz6() { }
-
-        //    public void ShipArtHorz7() { 
-            
+        }
 
 
         

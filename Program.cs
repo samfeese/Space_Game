@@ -17,8 +17,8 @@ namespace Space_Game
             Thread.Sleep(1000);
             Console.Clear();
 
-            // display.ShipArtHorz();
-            //talk.StartGameDialog();
+            talk.StartGameDialog();
+
             talk.StartMove();
             
          

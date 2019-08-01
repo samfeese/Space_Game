@@ -10,7 +10,8 @@ namespace Space_Game
         public double velocity;
         public double loadCapacity;
         public double fuelCost;
-
+        public double travelTime;
+        public string difficulity;
 
         double speedModify;
         double loadModify;
@@ -42,18 +43,24 @@ namespace Space_Game
         public void Speed(int warpFactor)
         {
             double baseVelocity = Math.Pow(warpFactor, (10 / 3)) + Math.Pow((10 - warpFactor), (-11 / 3));
-            velocity = speedModify * baseVelocity;
+            velocity = baseVelocity;
         }
         public void Capacity()
         {
             const double baseLoad = 100;
-            loadCapacity = loadModify * baseLoad;
+            loadCapacity = baseLoad;
+        }
+        public void TravelTime(double distance)
+        {
+           travelTime = distance / velocity;
         }
 
         public void Fuel (double distance)
         {
             fuelCost = distance * fuelConsomption;
         }
+
+        
 
     }
 }

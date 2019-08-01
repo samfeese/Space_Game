@@ -40,8 +40,9 @@ namespace Space_Game
 
             double x = random.Next(0, 10) + random.NextDouble();
             double y = random.Next(0, 10) + random.NextDouble();
-
-            planetCoordinate = (x, y);
+            double x10 = x * 10;
+            double y10 = y * 10;
+            planetCoordinate = (x10, y10);
             
         }
 
@@ -57,5 +58,5 @@ namespace Space_Game
             return distance;
 
         }
-    }
+    }   
 }
