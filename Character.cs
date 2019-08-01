@@ -9,18 +9,11 @@ namespace Space_Game
        public string userName;
        public int startAge;
        public decimal startMoney;
-
-        public Character()
-        {
-
-        }
         public Character(string name, int userCharClass)
         {
             SetName(name);
             SetCharacterClass(userCharClass);
-            
         }
-
         
         public void SetName(string name)
         {

@@ -9,7 +9,7 @@ namespace Space_Game
       
         public double velocity;
         public double loadCapacity;
-        public double fuel;
+        public double fuelCost;
 
 
         double speedModify;
@@ -52,7 +52,7 @@ namespace Space_Game
 
         public void Fuel (double distance)
         {
-            fuel = distance * fuelConsomption;
+            fuelCost = distance * fuelConsomption;
         }
 
     }

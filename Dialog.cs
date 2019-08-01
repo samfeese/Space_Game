@@ -10,7 +10,7 @@ namespace Space_Game
         UserInterface ui = new UserInterface();
         public void StartGameDialog()
         {
-            ui.PlanetPlacement();
+            
             ui.UIstart();
 
             Console.WriteLine();
@@ -21,7 +21,7 @@ namespace Space_Game
             Console.WriteLine("You awake to three loud knocks at your space door.");
                 Thread.Sleep(2000);
 
-            Console.WriteLine($"\n\nHEY {ui.name}, we know your in there open up!");
+            Console.WriteLine($"\n\nHEY {ui.characterName}, we know your in there open up!");
                 Thread.Sleep(2000);
 
             Console.WriteLine("You look at the clock and its 18:22:35 space standard time");
@@ -62,7 +62,7 @@ namespace Space_Game
         }
         public void StartMove()
         {
-            ui.MovePlanet();
+            ui.Explore();
         }
             
 
