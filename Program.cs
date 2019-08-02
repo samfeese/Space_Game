@@ -9,8 +9,9 @@ namespace Space_Game
         static void Main(string[] args)
         {
 
-            ShipArt display = new ShipArt();
+            //ShipArt display = new ShipArt();
             Dialog talk = new Dialog();
+<<<<<<< HEAD
             Blackjack game = new Blackjack();
             Blackjack.Deck deck = new Blackjack.Deck();
             //display.ShipArtVertical();
@@ -23,11 +24,31 @@ namespace Space_Game
 
           
 
+=======
+
+
+            //display.ShipArtVertical();
+            //Thread.Sleep(1000);
+            //Console.Clear();
+
+            //talk.StartGameDialog();
+
+            talk.StartMove();
 
 
 
 
 
+>>>>>>> 16c2f669e7b686b70f07bbfd25e3263c4a8af771
+
+
+
+
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 16c2f669e7b686b70f07bbfd25e3263c4a8af771
 
         }
     }  

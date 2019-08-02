@@ -10,7 +10,7 @@ namespace Space_Game
      
         public string itemChanged;
 
-        public void PlanetMenu()
+        public void PlanetMenu(List<int> currentPlanet)
         {
             Console.Clear();
             Console.WriteLine("Would you like to Buy or Sell?");
@@ -23,10 +23,10 @@ namespace Space_Game
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    ShopBuy();
+                    ShopBuy(currentPlanet);
                         break;
                 case ConsoleKey.D2:
-                    ShopSell();
+                    ShopSell(currentPlanet);
                     break;
                 case ConsoleKey.Escape:
                     break;
@@ -35,19 +35,19 @@ namespace Space_Game
         }
 
 
-        public void ShopBuy()
+        public void ShopBuy(List<int> currentPlanet)
         {
-            string itemPrice = "$10";
+            
 
             Console.WriteLine("Welcome to my shop");
 
-            Console.WriteLine("\nSelect and item to buy: ");
+            Console.WriteLine("\nSelect and item to sell: ");
             Console.WriteLine();
-            Console.WriteLine($"1: Skooma - {itemPrice}");
-            Console.WriteLine($"2: Lulu - {itemPrice}");
-            Console.WriteLine($"3: Skooma - {itemPrice}");
-            Console.WriteLine($"4: Skooma - {itemPrice}");
-            Console.WriteLine($"5: Skooma - {itemPrice}");
+            Console.WriteLine($"1: Skooma - {currentPlanet[0]}");
+            Console.WriteLine($"2: Skooma - {currentPlanet[1]}");
+            Console.WriteLine($"3: Skooma - {currentPlanet[2]}");
+            Console.WriteLine($"4: Skooma - {currentPlanet[3]}");
+            Console.WriteLine($"5: Skooma - {currentPlanet[4]}");
 
             var input = Console.ReadKey();
             string itemName;
@@ -95,19 +95,19 @@ namespace Space_Game
 
         }
 
-        public void ShopSell()
+        public void ShopSell(List<int> currentPlanet)
         {
-            int itemPrice = 10;
+            
 
             Console.WriteLine("Welcome to my shop");
 
             Console.WriteLine("\nSelect and item to sell: ");
             Console.WriteLine();
-            Console.WriteLine($"1: Skooma - {itemPrice}");
-            Console.WriteLine($"2: Skooma - {itemPrice}");
-            Console.WriteLine($"3: Skooma - {itemPrice}");
-            Console.WriteLine($"4: Skooma - {itemPrice}");
-            Console.WriteLine($"5: Skooma - {itemPrice}");
+            Console.WriteLine($"1: Skooma - {currentPlanet[0]}");
+            Console.WriteLine($"2: Skooma - {currentPlanet[1]}");
+            Console.WriteLine($"3: Skooma - {currentPlanet[2]}");
+            Console.WriteLine($"4: Skooma - {currentPlanet[3]}");
+            Console.WriteLine($"5: Skooma - {currentPlanet[4]}");
 
             var input = Console.ReadKey();
             string itemName;

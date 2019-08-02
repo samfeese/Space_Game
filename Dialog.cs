@@ -62,9 +62,10 @@ namespace Space_Game
         }
         public void StartMove()
         {
-            ui.PlanetOptions();
-
-            //ui.Explore();
+            //ui.PlanetOptions();
+            ui.UIstart();
+            ui.TravelMenu();
+            ui.Explore();
         }
             
 

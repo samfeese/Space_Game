@@ -10,6 +10,7 @@ namespace Space_Game
         public (string, (double, double)) planetEarth = ( "Earth",( 0, 0) );
         public (double, double) planetCoordinate;
         public (string, (double, double)) planetAlpha;
+        public double distance;
         Random random = new Random();
 
         public Planet()
@@ -37,26 +38,12 @@ namespace Space_Game
         }
         public void PlanetCoordinateGenerator()
         {
-
             double x = random.Next(0, 10) + random.NextDouble();
             double y = random.Next(0, 10) + random.NextDouble();
             double x10 = x * 10;
             double y10 = y * 10;
             planetCoordinate = (x10, y10);
             
-        }
-
-        public double Distance((double, double) x, (double, double) y)
-        {
-            double deltaX = y.Item1 - x.Item1;
-            double deltaY = y.Item2 - x.Item2;
-
-
-            double z = Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2);
-
-            double distance = Math.Sqrt(z);
-            return distance;
-
         }
     }   
 }
