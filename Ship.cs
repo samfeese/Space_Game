@@ -9,13 +9,10 @@ namespace Space_Game
       
         public double velocity;
         public double loadCapacity;
-        public double fuelCost;
-        public double travelTime;
-        public string difficulity;
-
-        double speedModify;
-        double loadModify;
-        double fuelConsomption;
+        
+        public double speedModify;
+        public double loadModify;
+        public double fuelModify;
        
         public void ShipType(int age)
         {
@@ -25,42 +22,32 @@ namespace Space_Game
                 case 18:
                     speedModify = 1.1;
                     loadModify = 1.1;
-                    fuelConsomption = 1;
+                    fuelModify = 1;
                     break;
                 case 22:
                     speedModify = 1.5;
                     loadModify = 1.5;
-                    fuelConsomption = 0.75;
+                    fuelModify = 0.75;
                     break;
                 case 26:
                     speedModify = 1.9;
                     loadModify = 1.9;
-                    fuelConsomption = 0.5;
+                    fuelModify = 0.5;
                     break;
             }
         }
 
-        public void Speed(int warpFactor)
+        public void Speed(int warpFactor, int speedModify)
         {
             double baseVelocity = Math.Pow(warpFactor, (10 / 3)) + Math.Pow((10 - warpFactor), (-11 / 3));
-            velocity = baseVelocity;
+            velocity = baseVelocity * speedModify;
         }
+
         public void Capacity()
         {
             const double baseLoad = 100;
-            loadCapacity = baseLoad;
+            loadCapacity = baseLoad * loadModify;
         }
-        public void TravelTime(double distance)
-        {
-           travelTime = distance / velocity;
-        }
-
-        public void Fuel (double distance)
-        {
-            fuelCost = distance * fuelConsomption;
-        }
-
         
-
     }
 }
