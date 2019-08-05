@@ -16,7 +16,8 @@ namespace Space_Game
 
         Character character1;
        // Universe galaxy1;
-        Travel move = new Travel();
+        Travel move;
+        PlanetPhase trade;
         ShipArt animation = new ShipArt();
 
        
@@ -34,28 +35,30 @@ namespace Space_Game
             int userCharClass = int.Parse(Console.ReadLine());
 
             character1 = new Character(characterName, userCharClass);
-            move.TravelMenu();
+            trade = new PlanetPhase();
+            move = new Travel();
+            Console.Clear();
+            InventoryShow();
+            
+
             //galaxy1.ship.ShipType(character1.startAge);
 
             //Console.WriteLine($"Hey {character1.userName}");
             //character1.SetShip();
         }
 
-<<<<<<< HEAD
+        public void upKeep()
+        {
+            int ageChange = Convert.ToInt32(Math.Round(move.travelTime));
+            character1.Expenses(trade.bill);
+            character1.Profit(trade.profit);
+            character1.Aging(ageChange);
+        }
 
-        //public void PlanetOptions()
-        //{
-        //    Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
-        //    var input = Console.ReadKey();
-
-        //    if (input.Key != ConsoleKey.Escape)
-        //    {
-        //        planetPhase.Shop();
-        //        //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
-=======
+        
         public void InventoryShow()
         {
-           
+            trade.DisplayMyInventory();
         }
         public void PlanetOptions()
         {
@@ -66,12 +69,12 @@ namespace Space_Game
             {
                 //planetPhase.PlanetMenu();
                 //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
->>>>>>> 287fb2f5461eb03d4f05f70cf241d44d0d83e4de
+
                 //handOver.InventoryArt();
-           // }
+            }
             //galaxy1.PlanetChoice();
             //Explore();
-        //}
+        }
 
         
 

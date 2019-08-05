@@ -33,6 +33,7 @@ namespace Space_Game
             currentPlanet = galaxy.earth;
             TravelMenu();
 
+
         }
 
        
@@ -55,7 +56,10 @@ namespace Space_Game
                 ship.Speed(warpFactor);
                 MovePlanet();// Calculates the speed, time so user can decide if they want to proceed
                 Console.WriteLine();
-                Console.WriteLine($"At the speed of {ship.velocity} , it will take you {travelTime} to reach your destination");
+                Console.WriteLine($"At the speed of {ship.velocity} , it will take you " +
+                                  $"{TravelTime(galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate), ship.velocity)}" +
+                                  $" to reach your destination");
+
                 Console.WriteLine("Do you want to proceed? Y/N");
                 var confirm = Console.ReadKey();
 
@@ -91,14 +95,16 @@ namespace Space_Game
                
         
        
-        public void TravelTime(double distance, double velocity)
+        public double TravelTime(double distance, double velocity)
         {
             travelTime = distance / velocity;
+            return travelTime;
         }
 
-        public void Fuel(double distance, double fuelConsumption)
+        public double Fuel(double distance, double fuelConsumption)
         {
             fuelCost = distance * fuelConsumption;
+            return fuelCost;
         }
         public void PlanetChoice(ConsoleKeyInfo choice)
         {

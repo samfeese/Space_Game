@@ -6,7 +6,7 @@ namespace Space_Game
 {
     class PlanetPhase
     {
-        Inventory goods = new Inventory();
+        Inventory goods;
 
         public Dictionary<char, string> myGoods;
         public Dictionary<char, int> myLoad;
@@ -14,10 +14,18 @@ namespace Space_Game
         public int addToInventory;
         public decimal bill;
         public decimal profit;
+
+        public decimal assets;
         public string itemChanged;
 
         decimal itemPrice = 10;
 
+        public PlanetPhase()
+        {
+            goods = new Inventory();
+            PlanetMenu();
+            InventoryUpKeep();
+        }
       
 
         public void PlanetMenu()
@@ -53,6 +61,7 @@ namespace Space_Game
             Console.WriteLine($"3: {goods.goodsName['b']} - ${itemPrice}");
             Console.WriteLine($"4: {goods.goodsName['t']} - ${itemPrice}");
             Console.WriteLine($"5: {goods.goodsName['d']} - ${itemPrice}");
+            Console.WriteLine($"6: {goods.goodsName['f']} - ${itemPrice}");
         }
 
           
@@ -167,6 +176,30 @@ namespace Space_Game
         {
             myGoods = goods.goodsName;
             myLoad = goods.goodsQuantity;
+            DisplayMyInventory();
+        }
+
+        public void DisplayMyInventory()
+        {
+            Console.WriteLine($"1: {myGoods['s']} - {myLoad['s']}");
+            Console.WriteLine($"2: {myGoods['l']} - {myLoad['l']}");
+            Console.WriteLine($"3: {myGoods['b']} - {myLoad['b']}");
+            Console.WriteLine($"4: {myGoods['t']} - {myLoad['t']}");
+            Console.WriteLine($"5: {myGoods['d']} - {myLoad['d']}");
+
+            assets += myLoad['s'] * itemPrice;
+            assets += myLoad['l'] * itemPrice;
+            assets += myLoad['b'] * itemPrice;
+            assets += myLoad['t'] * itemPrice;
+            assets += myLoad['d'] * itemPrice;
+
+            Console.WriteLine($"The value of my inventory is ${assets}");
+
+            //foreach (var item in myLoad)
+            //{
+            //    assets += myLoad * itemPrice;
+            //}
+
         }
         //public void ItemsTraded(string itemName, int quanity)
         //{
