@@ -12,7 +12,7 @@ namespace Space_Game
         {
             
             ui.UIstart();
-
+            
             //Console.WriteLine();
 
             //Console.WriteLine("*BANG* *BANG* *BANG*");
@@ -63,8 +63,7 @@ namespace Space_Game
         public void StartMove()
         {
             //ui.PlanetOptions();
-            ui.UIstart();
-            ui.TravelMenu();
+            //ui.TravelMenu();
             ui.Explore();
         }
             

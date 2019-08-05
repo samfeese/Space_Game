@@ -56,14 +56,14 @@ namespace Space_Game
                     break;
                 default:
                     goPlanet = ("You are lost in Galaxy forever", (0, 0));
-                    MovePlanet();
+                    //MovePlanet();
                     break;
             }
 
         }
         public void MovePlanet()
         {
-             galaxy.Distance(currentPlanet.Item2, goPlanet.Item2);
+            galaxy.Distance(currentPlanet.Item2, goPlanet.Item2);
             travelDistance = galaxy.distance;
         }
         public void MoveConfirm(ConsoleKeyInfo input)
@@ -75,5 +75,6 @@ namespace Space_Game
             }
         }
 
+        
     }
 }

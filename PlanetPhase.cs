@@ -6,11 +6,19 @@ namespace Space_Game
 {
     class PlanetPhase
     {
+        Inventory goods = new Inventory();
+
+        public Dictionary<char, string> myGoods;
+        public Dictionary<char, int> myLoad;
+
         public int addToInventory;
-     
+        public decimal bill;
+        public decimal profit;
         public string itemChanged;
 
-        public void PlanetMenu()
+        decimal itemPrice = 10;
+
+        public void Shop()
         {
             Console.Clear();
             Console.WriteLine("Would you like to Buy or Sell?");
@@ -35,141 +43,140 @@ namespace Space_Game
         }
 
 
+        public void DisplayGoods()
+        {
+            Console.WriteLine($"1: {goods.goodsName['s']} - ${itemPrice}");
+            Console.WriteLine($"2: {goods.goodsName['l']} - ${itemPrice}");
+            Console.WriteLine($"3: {goods.goodsName['b']} - ${itemPrice}");
+            Console.WriteLine($"4: {goods.goodsName['t']} - ${itemPrice}");
+            Console.WriteLine($"5: {goods.goodsName['d']} - ${itemPrice}");
+        }
+
         public void ShopBuy()
         {
-            string itemPrice = "$10";
-
             Console.WriteLine("Welcome to my shop");
-
             Console.WriteLine("\nSelect and item to buy: ");
             Console.WriteLine();
-            Console.WriteLine($"1: Skooma - {itemPrice}");
-            Console.WriteLine($"2: Lulu - {itemPrice}");
-            Console.WriteLine($"3: Skooma - {itemPrice}");
-            Console.WriteLine($"4: Skooma - {itemPrice}");
-            Console.WriteLine($"5: Skooma - {itemPrice}");
-
+            DisplayGoods();
             var input = Console.ReadKey();
-            string itemName;
-            int quanity;
+            Console.WriteLine("How many?");
+            var quanity = int.Parse(Console.ReadLine());
+           
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = int.Parse(Console.ReadLine());
+                    goods.ItemChange(quanity, 's');
+                    bill += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D2:
-                    itemName = "Lulu";
-                    Console.WriteLine("How many?");
-                    quanity = int.Parse(Console.ReadLine());
+                    goods.ItemChange(quanity, 'l');
+                    bill += quanity * itemPrice;
                     break;
-
+                 
                 case ConsoleKey.D3:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = int.Parse(Console.ReadLine());
+                    goods.ItemChange(quanity, 'b');
+                    bill += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D4:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = int.Parse(Console.ReadLine());
+                    goods.ItemChange(quanity, 't');
+                    bill += quanity * itemPrice;
                     break;
-
                 case ConsoleKey.D5:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = int.Parse(Console.ReadLine());
+                    goods.ItemChange(quanity, 'd');
+                    bill += quanity * itemPrice;
                     break;
                 default:
-                   itemName = "Skooma";
-                   quanity = 0;
+                  
                     break;
-
-
-
             }
-            ItemsTraded(itemName, quanity);
-
+          
+            Console.WriteLine("Do you wanna buy more items? Y/N");
+            var choice = Console.ReadKey();
+            
+            if (choice.Key == ConsoleKey.Y)
+            {
+                ShopBuy();
+            }
+           
         }
 
         public void ShopSell()
         {
-            int itemPrice = 10;
 
             Console.WriteLine("Welcome to my shop");
 
             Console.WriteLine("\nSelect and item to sell: ");
             Console.WriteLine();
-            Console.WriteLine($"1: Skooma - {itemPrice}");
-            Console.WriteLine($"2: Skooma - {itemPrice}");
-            Console.WriteLine($"3: Skooma - {itemPrice}");
-            Console.WriteLine($"4: Skooma - {itemPrice}");
-            Console.WriteLine($"5: Skooma - {itemPrice}");
 
+            DisplayGoods();
             var input = Console.ReadKey();
-            string itemName;
-            int quanity;
+
+            Console.WriteLine("How many?");
+            var quanity = int.Parse(Console.ReadLine());
+
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = -1 * int.Parse(Console.ReadLine());
+                    goods.ItemChange((quanity * (-1)), 's');
+                    profit += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D2:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = -1 * int.Parse(Console.ReadLine());
+                    goods.ItemChange((quanity * (-1)), 'l');
+                    profit += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D3:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = -1 * int.Parse(Console.ReadLine());
+                    goods.ItemChange((quanity * (-1)), 'b');
+                    profit += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D4:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = -1 * int.Parse(Console.ReadLine());
+                    goods.ItemChange((quanity * (-1)), 't');
+                    profit += quanity * itemPrice;
                     break;
-
                 case ConsoleKey.D5:
-                    itemName = "Skooma";
-                    Console.WriteLine("How many?");
-                    quanity = -1 * int.Parse(Console.ReadLine());
+                    goods.ItemChange((quanity * (-1)), 'd');
+                    profit += quanity * itemPrice;
                     break;
                 default:
-                    itemName = "Skooma";
-                    quanity = 0;
+
                     break;
-
-
-
             }
-            ItemsTraded(itemName, quanity);
 
+            Console.WriteLine("Do you wanna sell more items? Y/N");
+            var choice = Console.ReadKey();
+
+            if (choice.Key == ConsoleKey.Y)
+            {
+                ShopSell();
+            }
+            
         }
-        public void ItemsTraded(string itemName, int quanity)
+
+        public void InventoryUpKeep()
         {
-
-            if (quanity <= 0)
-            {
-                itemChanged = itemName;
-                addToInventory =  quanity;
-
-            }
-            if (quanity > 0)
-            {
-                itemChanged = itemName;
-                addToInventory = quanity;
-            }
-
+            myGoods = goods.goodsName;
+            myLoad = goods.goodsQuantity;
         }
+        //public void ItemsTraded(string itemName, int quanity)
+        //{
+
+        //    if (quanity <= 0)
+        //    {
+        //        itemChanged = itemName;
+        //        addToInventory =  quanity;
+
+        //    }
+        //    if (quanity > 0)
+        //    {
+        //        itemChanged = itemName;
+        //        addToInventory = quanity;
+        //    }
+
+        //}
 
     }
 }

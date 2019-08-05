@@ -17,20 +17,9 @@ namespace Space_Game
         int warpFactor;
 
         Character character1;
-
-
-
-
         Universe galaxy1 = new Universe();
-
         Travel move;
-
-
-
-        Inventory handOver = new Inventory();
-
         PlanetPhase planetPhase = new PlanetPhase();
-
         ShipArt animation = new ShipArt();
 
         public void UIstart()
@@ -65,7 +54,7 @@ namespace Space_Game
 
             if (input.Key != ConsoleKey.Escape)
             {
-                planetPhase.PlanetMenu();
+                planetPhase.Shop();
                 //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
                 //handOver.InventoryArt();
             }
@@ -93,6 +82,7 @@ namespace Space_Game
             {
                 Console.WriteLine("What warp factor would you like to use? :");
                 warpFactor = int.Parse(Console.ReadLine());
+                character1.ShipSpecs(warpFactor);
             }
             else
             {
@@ -105,12 +95,12 @@ namespace Space_Game
         public void Explore()
         {
 
-            move = new Travel(galaxy1.distance, character1.velocity, galaxy1.fuelBetweenPlanets);
-            fuelCostOfTravel = move.fuelCost;
-            timeTraveling = move.travelTime;
-            move.PlanetChoice(planetChoice);
+            //move = new Travel(galaxy1.distance, character1.velocity, galaxy1.fuelBetweenPlanets);
+            //fuelCostOfTravel = move.fuelCost;
+            //timeTraveling = move.travelTime;
+            //move.PlanetChoice(planetChoice);
 
-            Console.WriteLine($"The distance between {move.currentPlanet.Item1} and {move.goPlanet.Item1} is {move.travelDistance} Light years");
+           // Console.WriteLine($"The distance between {move.currentPlanet.Item1} and {move.goPlanet.Item1} is {move.travelDistance} Light years");
 
 
             //do
@@ -127,7 +117,7 @@ namespace Space_Game
             //} while (input.Key != ConsoleKey.Escape);
 
 
-
+            animation.ShipArtVertical();
             animation.ShipArtHorz();
 
 

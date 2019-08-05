@@ -9,26 +9,23 @@ namespace Space_Game
         Ship ship = new Ship();
 
        public string userName;
-       public int startAge;
-       public decimal startMoney;
+       public int currentAge;
+       public decimal currentMoney;
        public double fuelFactor;
         public double currentfuelLevel; 
        public double capacity;
         public double velocity;
-        public Character(string name, int userCharClass)
+        
+
+        public Character(string name, int userCharClass )
         {
             SetName(name);
             SetCharacterClass(userCharClass);
-            ShipSpecs();
-           
+
         }
-        
-        public void SetName(string name)
-        {
-            userName = name;
-           
-        } 
-        
+
+        public void SetName(string name) => userName = name;
+
 
         public void SetCharacterClass(int userCharClass)
         {
@@ -36,36 +33,39 @@ namespace Space_Game
             switch (userCharClass)
             {
                 case 1:
-                    startAge = 18;
-                    startMoney = 100;
+                    currentAge = 18;
+                    currentMoney = 100;
                     currentfuelLevel = 1000;
                     break;
                 case 2:
-                    startAge = 22;
-                    startMoney = 200;
+                    currentAge = 22;
+                    currentMoney = 200;
                     currentfuelLevel = 2000;
                     break;
                 case 3:
-                    startAge = 26;
-                    startMoney = 300;
+                    currentAge = 26;
+                    currentMoney = 300;
                     currentfuelLevel = 3000;
                     break;
                     
             }
         }
 
-        public void ShipSpecs()
+        public void ShipSpecs(double warpFactor)
         {
-            ship.ShipType(startAge);
+            ship.ShipType(currentAge);
+            ship.Speed(warpFactor, ship.speedModify);
             fuelFactor = ship.fuelModify;
             capacity = ship.loadCapacity;
             velocity = ship.velocity;
         }
-        
-        public void FuelAfterTravel(double expandedFuel)
-        {
-            currentfuelLevel -= expandedFuel;
-        }
 
+        public void FuelAfterTravel(double expandedFuel) => currentfuelLevel -= expandedFuel;
+
+        public void Profit(decimal profit) => currentMoney += profit;
+
+        public void Expenses(decimal bill) => currentMoney -= bill;
+
+        public void Aging(int traveltime) => currentAge += traveltime;
     }
 }

@@ -9,15 +9,15 @@ namespace Space_Game
         static void Main(string[] args)
         {
 
-            //ShipArt display = new ShipArt();
+            ShipArt display = new ShipArt();
             Dialog talk = new Dialog();
 
 
-            //display.ShipArtVertical();
-            //Thread.Sleep(1000);
-            //Console.Clear();
+            display.ShipArtVertical();
+            Thread.Sleep(1000);
+            Console.Clear();
 
-            //talk.StartGameDialog();
+           // talk.StartGameDialog();
 
             talk.StartMove();
 
