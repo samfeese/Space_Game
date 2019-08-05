@@ -16,9 +16,13 @@ namespace Space_Game
         public decimal profit;
         public string itemChanged;
 
+<<<<<<< HEAD
         decimal itemPrice = 10;
 
         public void Shop()
+=======
+        public void PlanetMenu(List<int> currentPlanet)
+>>>>>>> f8aa61285384c2e5c7cd728cfe8788e2f0f45870
         {
             Console.Clear();
             Console.WriteLine("Would you like to Buy or Sell?");
@@ -31,10 +35,10 @@ namespace Space_Game
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    ShopBuy();
+                    ShopBuy(currentPlanet);
                         break;
                 case ConsoleKey.D2:
-                    ShopSell();
+                    ShopSell(currentPlanet);
                     break;
                 case ConsoleKey.Escape:
                     break;
@@ -43,6 +47,7 @@ namespace Space_Game
         }
 
 
+<<<<<<< HEAD
         public void DisplayGoods()
         {
             Console.WriteLine($"1: {goods.goodsName['s']} - ${itemPrice}");
@@ -51,13 +56,30 @@ namespace Space_Game
             Console.WriteLine($"4: {goods.goodsName['t']} - ${itemPrice}");
             Console.WriteLine($"5: {goods.goodsName['d']} - ${itemPrice}");
         }
+=======
+        public void ShopBuy(List<int> currentPlanet)
+        {
+            
+>>>>>>> f8aa61285384c2e5c7cd728cfe8788e2f0f45870
 
         public void ShopBuy()
         {
             Console.WriteLine("Welcome to my shop");
+<<<<<<< HEAD
             Console.WriteLine("\nSelect and item to buy: ");
             Console.WriteLine();
             DisplayGoods();
+=======
+
+            Console.WriteLine("\nSelect and item to sell: ");
+            Console.WriteLine();
+            Console.WriteLine($"1: Skooma - {currentPlanet[0]}");
+            Console.WriteLine($"2: Skooma - {currentPlanet[1]}");
+            Console.WriteLine($"3: Skooma - {currentPlanet[2]}");
+            Console.WriteLine($"4: Skooma - {currentPlanet[3]}");
+            Console.WriteLine($"5: Skooma - {currentPlanet[4]}");
+
+>>>>>>> f8aa61285384c2e5c7cd728cfe8788e2f0f45870
             var input = Console.ReadKey();
             Console.WriteLine("How many?");
             var quanity = int.Parse(Console.ReadLine());
@@ -102,13 +124,25 @@ namespace Space_Game
            
         }
 
-        public void ShopSell()
+        public void ShopSell(List<int> currentPlanet)
         {
+<<<<<<< HEAD
+=======
+            
+>>>>>>> f8aa61285384c2e5c7cd728cfe8788e2f0f45870
 
             Console.WriteLine("Welcome to my shop");
 
             Console.WriteLine("\nSelect and item to sell: ");
             Console.WriteLine();
+<<<<<<< HEAD
+=======
+            Console.WriteLine($"1: Skooma - {currentPlanet[0]}");
+            Console.WriteLine($"2: Skooma - {currentPlanet[1]}");
+            Console.WriteLine($"3: Skooma - {currentPlanet[2]}");
+            Console.WriteLine($"4: Skooma - {currentPlanet[3]}");
+            Console.WriteLine($"5: Skooma - {currentPlanet[4]}");
+>>>>>>> f8aa61285384c2e5c7cd728cfe8788e2f0f45870
 
             DisplayGoods();
             var input = Console.ReadKey();
