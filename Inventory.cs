@@ -9,8 +9,8 @@ namespace Space_Game
     class Inventory
     {
 
-        public Dictionary<char, string> goodsName = new Dictionary<char, string>();
-        public Dictionary<char,  int> goodsQuantity = new Dictionary<char, int>();
+        public static Dictionary<char, string> goodsName = new Dictionary<char, string>();
+        public static Dictionary<char,  int> goodsQuantity = new Dictionary<char, int>();
 
         public Inventory()
         {
@@ -40,105 +40,106 @@ namespace Space_Game
 
         public void AddNewItem(char key, string itemName) => goodsName.Add(key, itemName);
         public void ItemChange(int howMany, char what) => goodsQuantity[what] += howMany;
-        public void InventoryArt()
+        public static void InventoryArt()
         {
+            
             Console.WriteLine("________________________________________");
             Console.WriteLine("|                                      |");
             Console.Write("|");
-           
-                
+
+
             if (goodsQuantity['s'] < 10)
             {
                 Console.Write("---");
                 Console.Write($"{goodsName['s']}: {goodsQuantity['s']}");
                 Console.Write("-------");
             }
-        //    else if (goodsQuantity["Skooma"] >= 10 && goodsQuantity["Skooma"] < 100)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Skooma: {goodsQuantity["Skooma"]}");
-        //        Console.Write("------");
-        //    }
+            else if (goodsQuantity['s'] >= 10 && goodsQuantity['s'] < 100)
+            {
+                Console.Write("---");
+                Console.Write($"Skooma: {goodsQuantity['s']}");
+                Console.Write("------");
+            }
 
-        //    if (goodsQuantity["Lulu"] < 10)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Lulu: {goodsQuantity["Lulu"]}");
-        //        Console.Write("---------");
-        //    }
-        //    else if (goodsQuantity["Lulu"] >= 10 && goodsQuantity["Lulu"] < 100)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Lulu: {goodsQuantity["Lulu"]}");
-        //        Console.Write("-------");
-        //    }
+            if (goodsQuantity['l'] < 10)
+            {
+                Console.Write("---");
+                Console.Write($"Lulu: {goodsQuantity['l']}");
+                Console.Write("---------");
+            }
+            else if (goodsQuantity['l'] >= 10 && goodsQuantity['l'] < 100)
+            {
+                Console.Write("---");
+                Console.Write($"Lulu: {goodsQuantity['l']}");
+                Console.Write("-------");
+            }
 
-           
-        //    Console.WriteLine("|");
-        //    Console.WriteLine("|                                      |");
-        //    Console.Write("|");
-        //    if (goodsQuantity["Skooma"] < 10)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Skooma: {goodsQuantity["Skooma"]}");
-        //        Console.Write("-------");
-        //    }
-        //    else if (goodsQuantity["Skooma"] >= 10 && goodsQuantity["Skooma"] < 100)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Skooma: {goodsQuantity["Skooma"]}");
-        //        Console.Write("------");
-        //    }
 
-        //    if (goodsQuantity["Lulu"] < 10)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Lulu: {goodsQuantity["Lulu"]}");
-        //        Console.Write("---------");
-        //    }
-        //    else if (goodsQuantity["Lulu"] >= 10 && goodsQuantity["Lulu"] < 100)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Lulu: {goodsQuantity["Lulu"]}");
-        //        Console.Write("-------");
-        //    }
-        //    Console.WriteLine("|");
-        //    Console.WriteLine("|                                      |");
-        //    Console.Write("|");
-        //    if (goodsQuantity["Skooma"] < 10)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Skooma: {goodsQuantity["Skooma"]}");
-        //        Console.Write("-------");
-        //    }
-        //    else if (goodsQuantity["Skooma"] >= 10 && goodsQuantity["Skooma"] < 100)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Skooma: {goodsQuantity["Skooma"]}");
-        //        Console.Write("------");
-        //    }
+            Console.WriteLine("|");
+            Console.WriteLine("|                                      |");
+            Console.Write("|");
+            if (goodsQuantity['b'] < 10)
+            {
+                Console.Write("---");
+                Console.Write($"Brams: {goodsQuantity['b']}");
+                Console.Write("-------");
+            }
+            else if (goodsQuantity['b'] >= 10 && goodsQuantity['b'] < 100)
+            {
+                Console.Write("---");
+                Console.Write($"Brams: {goodsQuantity['b']}");
+                Console.Write("------");
+            }
 
-        //    if (goodsQuantity["Lulu"] < 10)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Lulu: {goodsQuantity["Lulu"]}");
-        //        Console.Write("---------");
-        //    }
-        //    else if (goodsQuantity["Lulu"] >= 10 && goodsQuantity["Lulu"] < 100)
-        //    {
-        //        Console.Write("---");
-        //        Console.Write($"Lulu: {goodsQuantity["Lulu"]}");
-        //        Console.Write("-------");
-        //    }
+            if (goodsQuantity['t'] < 10)
+            {
+                Console.Write("---");
+                Console.Write($"Targens: {goodsQuantity['t']}");
+                Console.Write("---------");
+            }
+            else if (goodsQuantity['t'] >= 10 && goodsQuantity['t'] < 100)
+            {
+                Console.Write("---");
+                Console.Write($"Targens: {goodsQuantity['t']}");
+                Console.Write("-------");
+            }
+            Console.WriteLine("|");
+            Console.WriteLine("|                                      |");
+            Console.Write("|");
+            if (goodsQuantity['d'] < 10)
+            {
+                Console.Write("---");
+                Console.Write($"Dryer Lint: {goodsQuantity['d']}");
+                Console.Write("-------");
+            }
+            else if (goodsQuantity['d'] >= 10 && goodsQuantity['d'] < 100)
+            {
+                Console.Write("---");
+                Console.Write($"Dryer Lint: {goodsQuantity['d']}");
+                Console.Write("------");
+            }
 
-        //    Console.WriteLine("|");
-        //    Console.WriteLine("|                                      |");
-           
-        //    Console.WriteLine("|______________________________________|");
-            
+            if (goodsQuantity['f'] < 10)
+            {
+                Console.Write("---");
+                Console.Write($"Fuel: {goodsQuantity['f']}");
+                Console.Write("---------");
+            }
+            else if (goodsQuantity['f'] >= 10 && goodsQuantity['f'] < 100)
+            {
+                Console.Write("---");
+                Console.Write($"Fuel: {goodsQuantity['f']}");
+                Console.Write("-------");
+            }
+
+            Console.WriteLine("|");
+            Console.WriteLine("|                                      |");
+
+            Console.WriteLine("|______________________________________|");
+
 
         }
-       
+
 
 
 

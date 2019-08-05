@@ -18,7 +18,7 @@ namespace Space_Game
         Universe galaxy1;
         Travel move;
         ShipArt animation = new ShipArt();
-
+        PlanetPhase planetPhase = new PlanetPhase();
        
 
         public void UIstart()
@@ -42,47 +42,47 @@ namespace Space_Game
         }
 
 
-        //public void PlanetOptions()
-        //{
-        //    Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
-        //    var input = Console.ReadKey();
+        public void PlanetOptions()
+        {
+            Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
+            var input = Console.ReadKey();
 
-        //    if (input.Key != ConsoleKey.Escape)
-        //    {
-        //        planetPhase.Shop();
-        //        //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
-                //handOver.InventoryArt();
-           // }
-            //galaxy1.PlanetChoice();
-            //Explore();
-        //}
+            if (input.Key != ConsoleKey.Escape)
+            {
+                planetPhase.Shop();
+                //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
+                handOver.InventoryArt();
+            }
+            galaxy1.PlanetChoice();
+            Explore();
+        }
 
-        
 
-     
+
+
         public void Explore()
         {
 
-            //move = new Travel(galaxy1.distance, character1.velocity, galaxy1.fuelBetweenPlanets);
-            //fuelCostOfTravel = move.fuelCost;
-            //timeTraveling = move.travelTime;
-            //move.PlanetChoice(planetChoice);
+            move = new Travel(galaxy1.distance, character1.velocity, galaxy1.fuelBetweenPlanets);
+            fuelCostOfTravel = move.fuelCost;
+            timeTraveling = move.travelTime;
+            move.PlanetChoice(planetChoice);
 
-           // Console.WriteLine($"The distance between {move.currentPlanet.Item1} and {move.goPlanet.Item1} is {move.travelDistance} Light years");
-
-
-            //do
-            //{
+            Console.WriteLine($"The distance between {move.currentPlanet.Item1} and {move.goPlanet.Item1} is {move.travelDistance} Light years");
 
 
-            //    galaxy1.ship.Speed(warpFactor);
+            do
+            {
 
-            //    galaxy1.ship.TravelTime(galaxy1.MovePlanet());
 
-            //    Console.WriteLine(galaxy1.ship.velocity);
+                galaxy1.ship.Speed(warpFactor);
 
-            //    Console.WriteLine($"\nAt Warp {warpFactor} it will take you {galaxy1.ship.travelTime} Years");
-            //} while (input.Key != ConsoleKey.Escape);
+                galaxy1.ship.TravelTime(galaxy1.MovePlanet());
+
+                Console.WriteLine(galaxy1.ship.velocity);
+
+                Console.WriteLine($"\nAt Warp {warpFactor} it will take you {galaxy1.ship.travelTime} Years");
+            } while (input.Key != ConsoleKey.Escape);
 
 
             animation.ShipArtVertical();
@@ -94,12 +94,7 @@ namespace Space_Game
         }
 
 
-        //public void ChangeInventory(int valueOfItem)
-        //{
-        //    handOver.ItemA(valueOfItem, handOver.skooma);
-        //    Console.WriteLine($"{handOver.skooma.Item2}");
-        //}
-
+        
 
     }
 }
