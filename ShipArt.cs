@@ -174,16 +174,172 @@ namespace Space_Game
             }
         }
 
-        public void InventoryArt()
+        public void EarthArt()
+        {
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.Write("                    ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("        ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("                  ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("            ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("              ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write("              ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("  ");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("            ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write("               ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("    ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("          ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write("             ");
+
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("          ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("          ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write("             ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("          ");
+
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("            ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("                   ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("              ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("              ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("                  ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("            ");
+
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("                    ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("        ");
+            Console.BackgroundColor = ConsoleColor.Black;
+
+
+        }
+        public void Planet2Art()
         {
 
 
 
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.Write("                    ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("        ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("                  ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("            ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("              ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.Write("              ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("  ");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("            ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.Write("               ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("    ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("          ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write("             ");
+
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("          ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("          ");
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.Write("             ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("          ");
+
+            Console.BackgroundColor = ConsoleColor.Magenta;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("            ");
+            Console.BackgroundColor = ConsoleColor.Magenta;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("                   ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("              ");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Write("      ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("              ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("                  ");
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("            ");
+
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("                    ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("        ");
+            Console.BackgroundColor = ConsoleColor.Black;
 
 
         }
-
-
         
     }
 }
