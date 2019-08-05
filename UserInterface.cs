@@ -12,19 +12,17 @@ namespace Space_Game
         public double fuelCostOfTravel;
         public double timeTraveling;
 
-        ConsoleKeyInfo planetChoice;
-        ConsoleKeyInfo confirmation;
-        int warpFactor;
+       
 
         Character character1;
-        Universe galaxy1 = new Universe();
+        Universe galaxy1;
         Travel move;
-        PlanetPhase planetPhase = new PlanetPhase();
         ShipArt animation = new ShipArt();
+
+       
 
         public void UIstart()
         {
-            galaxy1.PlanetPlacement();
             Console.WriteLine("Please enter you character name: ");
             characterName = Console.ReadLine();
 
@@ -36,60 +34,30 @@ namespace Space_Game
             int userCharClass = int.Parse(Console.ReadLine());
 
             character1 = new Character(characterName, userCharClass);
-            
+
             //galaxy1.ship.ShipType(character1.startAge);
 
             //Console.WriteLine($"Hey {character1.userName}");
             //character1.SetShip();
-            
-
-
         }
 
 
-        public void PlanetOptions()
-        {
-            Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
-            var input = Console.ReadKey();
+        //public void PlanetOptions()
+        //{
+        //    Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
+        //    var input = Console.ReadKey();
 
-            if (input.Key != ConsoleKey.Escape)
-            {
-                planetPhase.Shop();
-                //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
+        //    if (input.Key != ConsoleKey.Escape)
+        //    {
+        //        planetPhase.Shop();
+        //        //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
                 //handOver.InventoryArt();
-            }
+           // }
             //galaxy1.PlanetChoice();
-            Explore();
-        }
+            //Explore();
+        //}
 
-        public void TravelMenu()
-        {
-            Console.WriteLine("Which Planet do you want to go to? ");
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"1.{galaxy1.earth.Item1} ");
-            Console.WriteLine($"2.{galaxy1.alphaProxima.Item1} ");
-            Console.WriteLine($"3.{galaxy1.planetA.Item1} ");
-            Console.WriteLine($"4.{galaxy1.planetB.Item1} ");
-            Console.WriteLine($"5.{galaxy1.planetC.Item1} ");
-
-            planetChoice = Console.ReadKey();
-
-            Console.WriteLine("Press <Enter> to confirm or <Escape> to cancel:");
-
-            confirmation = Console.ReadKey();
-
-            if (confirmation.Key == ConsoleKey.Enter)
-            {
-                Console.WriteLine("What warp factor would you like to use? :");
-                warpFactor = int.Parse(Console.ReadLine());
-                character1.ShipSpecs(warpFactor);
-            }
-            else
-            {
-                TravelMenu();
-            }
-
-        }
+        
 
      
         public void Explore()

@@ -7,6 +7,12 @@ namespace Space_Game
     class Travel
     {
 
+
+
+        Universe galaxy;
+        PlanetPhase planetPhase = new PlanetPhase();
+        Ship ship = new Ship();
+
         public double travelTime;
         public double fuelCost;
         public double travelDistance;
@@ -14,8 +20,47 @@ namespace Space_Game
         public (string, (double, double)) goPlanet;
         public int  moneyGained;
 
-        Universe galaxy = new Universe();
+        ConsoleKeyInfo planetChoice;
+        ConsoleKeyInfo confirmation;
+        int warpFactor;
 
+        
+        public Travel(Random random)
+        {
+            galaxy = new Universe(random);
+        }
+
+        public void TravelMenu()
+        {
+            Console.WriteLine("Which Planet do you want to go to? ");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"1.{galaxy.earth.planetName} ");
+            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} ");
+            Console.WriteLine($"3.{galaxy.planet3.planetName} ");
+            Console.WriteLine($"4.{galaxy.planet4.planetName} ");
+            Console.WriteLine($"5.{galaxy.planet5.planetName} ");
+
+            planetChoice = Console.ReadKey();
+
+            Console.WriteLine("Press <Enter> to confirm or <Escape> to cancel:");
+
+            confirmation = Console.ReadKey();
+
+            if (confirmation.Key == ConsoleKey.Enter)
+            {
+                Console.WriteLine("What warp factor would you like to use? :");
+                warpFactor = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+                ship.Speed(1, warpFactor);
+
+                
+            }
+            else
+            {
+                TravelMenu();
+            }
+
+        }
         public Travel(double distance, double velocity, double fuelConsumption)
         {
             TravelTime(distance, velocity);
@@ -78,9 +123,7 @@ namespace Space_Game
             }
         }
 
-<<<<<<< HEAD
-        
-=======
+
         public void RandomEvent()
         {
             Random spaceEvent = new Random();
@@ -188,6 +231,6 @@ namespace Space_Game
             
 
         }
->>>>>>> f8aa61285384c2e5c7cd728cfe8788e2f0f45870
+
     }
 }

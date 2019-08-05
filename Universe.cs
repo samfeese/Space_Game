@@ -6,49 +6,44 @@ namespace Space_Game
 {
     class Universe
     {
+        public Planet planet3;
+        public Planet planet4;
+        public Planet planet5;
+        public Planet earth;
+        public Planet alphaProxima;
 
-        public double distance;
-        public double fuelBetweenPlanets;
-        Planet planet3 = new Planet();
-        Planet planet4 = new Planet();
-        Planet planet5 = new Planet();
-
-        public (string, (double, double)) earth;
-        public (string, (double, double)) alphaProxima;
-        public (string, (double, double)) planetA;
-        public (string, (double, double)) planetB;
-        public (string, (double, double)) planetC;
-
-        public Universe()
+        public Universe(Random random)
         {
-            PlanetPlacement();
+
+            planet3 = new Planet();
+            planet4 = new Planet();
+            planet5 = new Planet();
+            earth = new Planet("Earth", (0, 0));
+            alphaProxima = new Planet("Alpha Proxima", PlanetAplha(random));
         }
 
-        
-        public void PlanetPlacement()
+        private static (double, double) PlanetAplha(Random random)
         {
-            earth = planet3.planetEarth;
-            alphaProxima = planet3.planetAlpha;
-            planetA = (planet3.planetName, planet3.planetCoordinate);
-            planetB = (planet4.planetName, planet4.planetCoordinate);
-            planetC = (planet5.planetName, planet5.planetCoordinate);
-           // currentPlanet = (planet3.planetEarth);
+            double randomAngle = random.Next(0, 359);
+
+            double x = (Math.Cos(randomAngle) * 4.3);
+            double y = (Math.Sin(randomAngle) * 4.3);
+            return (x, y);
         }
 
-        
-        
 
-        public void Distance((double, double) x, (double, double) y)
+
+        public static double Distance((double, double) x, (double, double) y)
         {
             double deltaX = y.Item1 - x.Item1;
             double deltaY = y.Item2 - x.Item2;
 
-            distance = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
+            return Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
         }
 
-        public void FuelBetweenPlanet(double fuelConsumption, double distance)
+        public static double FuelBetweenPlanet(double fuelConsumption, double distance)
         {
-            fuelBetweenPlanets = distance * fuelConsumption;
+            return distance * fuelConsumption;
         }
 
     }

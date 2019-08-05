@@ -48,6 +48,8 @@ namespace Space_Game
             const double baseLoad = 100;
             loadCapacity = baseLoad * loadModify;
         }
+
+
         
     }
 }

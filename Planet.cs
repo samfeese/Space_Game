@@ -7,27 +7,25 @@ namespace Space_Game
     class Planet
     {
         public string planetName;
-        public (string, (double, double)) planetEarth = ( "Earth",( 0, 0) );
+       
         public (double, double) planetCoordinate;
-        public (string, (double, double)) planetAlpha;
+        
         public double distance;
         Random random = new Random();
 
         public Planet()
         {
-            PlanetAplha();
+            
             PlanetNameGenerator();
             PlanetCoordinateGenerator();
         }
-
-        public void PlanetAplha()
+        public Planet (string name, (double, double) coordinate)
         {
-            double randomAngle = random.Next(0, 359);
+            planetName = name;
+            planetCoordinate = coordinate;
 
-            double x = planetEarth.Item2.Item1 + (Math.Cos(randomAngle) * 4.3);
-            double y = planetEarth.Item2.Item2 + (Math.Sin(randomAngle) * 4.3);
-            planetAlpha = ("Alpha Proxima", (x, y));
         }
+       
 
         public void PlanetNameGenerator()
         {
