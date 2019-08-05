@@ -41,6 +41,7 @@ namespace Space_Game
             //character1.SetShip();
         }
 
+<<<<<<< HEAD
 
         //public void PlanetOptions()
         //{
@@ -51,6 +52,21 @@ namespace Space_Game
         //    {
         //        planetPhase.Shop();
         //        //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
+=======
+        public void InventoryShow()
+        {
+           
+        }
+        public void PlanetOptions()
+        {
+            Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
+            var input = Console.ReadKey();
+
+            if (input.Key != ConsoleKey.Escape)
+            {
+                //planetPhase.PlanetMenu();
+                //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
+>>>>>>> 287fb2f5461eb03d4f05f70cf241d44d0d83e4de
                 //handOver.InventoryArt();
            // }
             //galaxy1.PlanetChoice();

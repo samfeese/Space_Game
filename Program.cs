@@ -11,6 +11,7 @@ namespace Space_Game
 
             ShipArt display = new ShipArt();
             Dialog talk = new Dialog();
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //            Blackjack game = new Blackjack();
 //            Blackjack.Deck deck = new Blackjack.Deck();
@@ -30,11 +31,19 @@ namespace Space_Game
             display.ShipArtVertical();
             Thread.Sleep(1000);
             Console.Clear();
+=======
+
+            Inventory.InventoryArt();
+            //display.ShipArtVertical();
+            //Thread.Sleep(1000);
+            //Console.Clear();
+>>>>>>> 287fb2f5461eb03d4f05f70cf241d44d0d83e4de
 
             // talk.StartGameDialog();
 
             talk.StartGameDialog();
 
+<<<<<<< HEAD
 
 
 
@@ -50,6 +59,9 @@ namespace Space_Game
 
 //>>>>>>> 16c2f669e7b686b70f07bbfd25e3263c4a8af771
 
+=======
+            
+>>>>>>> 287fb2f5461eb03d4f05f70cf241d44d0d83e4de
         }
     }  
 }
