@@ -340,6 +340,12 @@ namespace Space_Game
 
 
         }
+        public static void BeginningArt()
+        {
+
+
+
+        }
         
     }
 }

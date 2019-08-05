@@ -67,5 +67,22 @@ namespace Space_Game
         public void Expenses(decimal bill) => currentMoney -= bill;
 
         public void Aging(int traveltime) => currentAge += traveltime;
+
+        public void WinOrLose()
+        {
+           if (currentAge > 60)
+            {
+                Console.WriteLine("YOU REACHED 60 AND DID NOT PAY YOUR DEBTS");
+                Environment.Exit(0);
+            }
+           else if (currentMoney < 0)
+            {
+                Console.WriteLine("YOU ARE OUT OF MONEY");
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("You survived another turn");
+            }
     }
 }
