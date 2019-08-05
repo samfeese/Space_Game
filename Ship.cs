@@ -9,6 +9,7 @@ namespace Space_Game
       
         public double velocity;
         public double loadCapacity;
+        public double fuelConsumption;
         
         public double speedModify;
         public double loadModify;
@@ -37,12 +38,18 @@ namespace Space_Game
             }
         }
 
-        public void Speed(double warpFactor, double speedModify)
+        public void Speed(double warpFactor)
         {
             double baseVelocity = Math.Pow(warpFactor, (10 / 3)) + Math.Pow((10 - warpFactor), (-11 / 3));
-            velocity = baseVelocity * speedModify;
+            velocity = baseVelocity;// * speedModify;
         }
 
+        public void FuelConsumption()
+        {
+            var baseFuel = 5;
+            fuelConsumption = baseFuel * fuelModify;
+
+        }
         public void Capacity()
         {
             const double baseLoad = 100;

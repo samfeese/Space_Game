@@ -8,52 +8,70 @@ namespace Space_Game
     {
 
 
-
+        Ship ship;
         Universe galaxy;
-        PlanetPhase planetPhase = new PlanetPhase();
-        Ship ship = new Ship();
+        //PlanetPhase planetPhase = new PlanetPhase();
+       
 
         public double travelTime;
         public double fuelCost;
         public double travelDistance;
-        public (string, (double, double)) currentPlanet;
-        public (string, (double, double)) goPlanet;
+
+        Planet currentPlanet;
+        Planet goPlanet;
         public int  moneyGained;
 
         ConsoleKeyInfo planetChoice;
         ConsoleKeyInfo confirmation;
         int warpFactor;
+        private int v;
 
-        
-        public Travel(Random random)
+        public Travel()
         {
-            galaxy = new Universe(random);
+            galaxy = new Universe();
+            ship = new Ship();
+            currentPlanet = galaxy.earth;
+            TravelMenu();
+
         }
 
+       
         public void TravelMenu()
         {
             Console.WriteLine("Which Planet do you want to go to? ");
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"1.{galaxy.earth.planetName} ");
-            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} ");
-            Console.WriteLine($"3.{galaxy.planet3.planetName} ");
-            Console.WriteLine($"4.{galaxy.planet4.planetName} ");
-            Console.WriteLine($"5.{galaxy.planet5.planetName} ");
+            DisplayPlanets();
 
             planetChoice = Console.ReadKey();
+            PlanetChoice(planetChoice);
 
             Console.WriteLine("Press <Enter> to confirm or <Escape> to cancel:");
-
             confirmation = Console.ReadKey();
 
             if (confirmation.Key == ConsoleKey.Enter)
             {
                 Console.WriteLine("What warp factor would you like to use? :");
                 warpFactor = int.Parse(Console.ReadLine());
+                ship.Speed(warpFactor);
+                MovePlanet();// Calculates the speed, time so user can decide if they want to proceed
                 Console.WriteLine();
-                ship.Speed(1, warpFactor);
+                Console.WriteLine($"At the speed of {ship.velocity} , it will take you {travelTime} to reach your destination");
+                Console.WriteLine("Do you want to proceed? Y/N");
+                var confirm = Console.ReadKey();
 
-                
+                if (confirm.Key == ConsoleKey.N)
+                {
+                    travelDistance = 0;
+                    travelTime = 0;
+                    TravelMenu();
+                }
+                else
+                {
+                    currentPlanet = goPlanet;
+
+                }
+
+
             }
             else
             {
@@ -61,12 +79,18 @@ namespace Space_Game
             }
 
         }
-        public Travel(double distance, double velocity, double fuelConsumption)
-        {
-            TravelTime(distance, velocity);
-            Fuel(distance, fuelConsumption);
-        }
 
+        void DisplayPlanets()
+        {
+            Console.WriteLine($"1.{galaxy.earth.planetName} ");
+            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} ");
+            Console.WriteLine($"3.{galaxy.planet3.planetName} ");
+            Console.WriteLine($"4.{galaxy.planet4.planetName} ");
+            Console.WriteLine($"5.{galaxy.planet5.planetName} ");
+        }
+               
+        
+       
         public void TravelTime(double distance, double velocity)
         {
             travelTime = distance / velocity;
@@ -83,46 +107,38 @@ namespace Space_Game
             {
                 case ConsoleKey.D1:
                     goPlanet = galaxy.earth;
-                    MovePlanet();
+                   // MovePlanet();
                     break;
                 case ConsoleKey.D2:
                     goPlanet = (galaxy.alphaProxima);
-                    MovePlanet();
+                  //  MovePlanet();
                     break;
                 case ConsoleKey.D3:
-                    goPlanet = galaxy.planetA;
-                    MovePlanet();
+                    goPlanet = galaxy.planet3;
+                   // MovePlanet();
                     break;
                 case ConsoleKey.D4:
-                    goPlanet = galaxy.planetB;
-                    MovePlanet();
+                    goPlanet = galaxy.planet4;
+                   // MovePlanet();
                     break;
                 case ConsoleKey.D5:
-                    goPlanet = galaxy.planetC;
-                    MovePlanet();
+                    goPlanet = galaxy.planet5;
+                   // MovePlanet();
                     break;
                 default:
-                    goPlanet = ("You are lost in Galaxy forever", (0, 0));
-                    //MovePlanet();
+                    Console.WriteLine( "You are lost in Galaxy forever");
                     break;
 
             }
 
         }
-        public void MovePlanet()
+        public  void MovePlanet()
         {
-            galaxy.Distance(currentPlanet.Item2, goPlanet.Item2);
-            travelDistance = galaxy.distance;
+            travelDistance = galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate);
+            TravelTime(travelDistance, ship.velocity);
+            fuelCost = galaxy.FuelBetweenPlanet(ship.fuelConsumption, travelDistance);
         }
-        public void MoveConfirm(ConsoleKeyInfo input)
-        {
-
-            if (input.Key == ConsoleKey.Enter)
-            {
-                currentPlanet = goPlanet;
-            }
-        }
-
+       
 
         public void RandomEvent()
         {
@@ -151,7 +167,7 @@ namespace Space_Game
         public void NormalTravel()
         {
             Console.WriteLine("You made your journey with no major incident and thank the Space Gods for smooth sailing.");
-            UpKeep();
+            //UpKeep();
             
         }
 
@@ -201,7 +217,7 @@ namespace Space_Game
                 
                 Console.WriteLine("Your decision was favorable and you found some money along the way!");
                 moneyGained = 1000;
-                UpKeep();
+                //UpKeep();
             }
 
         }

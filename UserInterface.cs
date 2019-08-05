@@ -11,12 +11,12 @@ namespace Space_Game
         public decimal currentMoney;
         public double fuelCostOfTravel;
         public double timeTraveling;
+        Random random = new Random();
 
-       
 
         Character character1;
-        Universe galaxy1;
-        Travel move;
+       // Universe galaxy1;
+        Travel move = new Travel();
         ShipArt animation = new ShipArt();
 
        
@@ -34,7 +34,7 @@ namespace Space_Game
             int userCharClass = int.Parse(Console.ReadLine());
 
             character1 = new Character(characterName, userCharClass);
-
+            move.TravelMenu();
             //galaxy1.ship.ShipType(character1.startAge);
 
             //Console.WriteLine($"Hey {character1.userName}");

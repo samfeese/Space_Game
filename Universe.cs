@@ -12,17 +12,19 @@ namespace Space_Game
         public Planet earth;
         public Planet alphaProxima;
 
-        public Universe(Random random)
+        Random random = new Random();
+
+        public Universe()
         {
 
             planet3 = new Planet();
             planet4 = new Planet();
             planet5 = new Planet();
             earth = new Planet("Earth", (0, 0));
-            alphaProxima = new Planet("Alpha Proxima", PlanetAplha(random));
+            alphaProxima = new Planet("Alpha Proxima", PlanetAplha());
         }
 
-        private static (double, double) PlanetAplha(Random random)
+        private  (double, double) PlanetAplha()
         {
             double randomAngle = random.Next(0, 359);
 
@@ -33,7 +35,7 @@ namespace Space_Game
 
 
 
-        public static double Distance((double, double) x, (double, double) y)
+        public double Distance((double, double) x, (double, double) y)
         {
             double deltaX = y.Item1 - x.Item1;
             double deltaY = y.Item2 - x.Item2;
@@ -41,7 +43,7 @@ namespace Space_Game
             return Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
         }
 
-        public static double FuelBetweenPlanet(double fuelConsumption, double distance)
+        public double FuelBetweenPlanet(double fuelConsumption, double distance)
         {
             return distance * fuelConsumption;
         }

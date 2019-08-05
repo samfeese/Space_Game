@@ -15,7 +15,6 @@ namespace Space_Game
 
         public Planet()
         {
-            
             PlanetNameGenerator();
             PlanetCoordinateGenerator();
         }

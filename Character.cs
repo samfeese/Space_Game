@@ -54,7 +54,7 @@ namespace Space_Game
         public void ShipSpecs(double warpFactor)
         {
             ship.ShipType(currentAge);
-            ship.Speed(warpFactor, ship.speedModify);
+           // ship.Speed(warpFactor, ship.speedModify);
             fuelFactor = ship.fuelModify;
             capacity = ship.loadCapacity;
             velocity = ship.velocity;
