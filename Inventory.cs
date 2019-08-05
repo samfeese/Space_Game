@@ -8,7 +8,7 @@ namespace Space_Game
 
     class Inventory
     {
-        public Dictionary<string, int> inventory = new Dictionary<string, int>();
+        public static Dictionary<string, int> inventory = new Dictionary<string, int>();
         
 
         public Inventory()
@@ -20,12 +20,12 @@ namespace Space_Game
             inventory.Add("Dryer Lint", 0);
 
         }
-        public void ItemChange(int change, string thing)
+        public static void ItemChange(int change, string thing)
         {
              inventory[thing] += change;
                       
         }
-        public void InventoryArt()
+        public static void InventoryArt()
         {
             Console.WriteLine("________________________________________");
             Console.WriteLine("|                                      |");
@@ -62,57 +62,57 @@ namespace Space_Game
             Console.WriteLine("|");
             Console.WriteLine("|                                      |");
             Console.Write("|");
-            if (inventory["Skooma"] < 10)
+            if (inventory["Brams"] < 10)
             {
                 Console.Write("---");
-                Console.Write($"Skooma: {inventory["Skooma"]}");
+                Console.Write($"Brams: {inventory["Brams"]}");
                 Console.Write("-------");
             }
-            else if (inventory["Skooma"] >= 10 && inventory["Skooma"] < 100)
+            else if (inventory["Brams"] >= 10 && inventory["Brams"] < 100)
             {
                 Console.Write("---");
-                Console.Write($"Skooma: {inventory["Skooma"]}");
+                Console.Write($"Brams: {inventory["Brams"]}");
                 Console.Write("------");
             }
 
-            if (inventory["Lulu"] < 10)
+            if (inventory["Targens"] < 10)
             {
                 Console.Write("---");
-                Console.Write($"Lulu: {inventory["Lulu"]}");
+                Console.Write($"Targens: {inventory["Targens"]}");
                 Console.Write("---------");
             }
-            else if (inventory["Lulu"] >= 10 && inventory["Lulu"] < 100)
+            else if (inventory["Targens"] >= 10 && inventory["Targens"] < 100)
             {
                 Console.Write("---");
-                Console.Write($"Lulu: {inventory["Lulu"]}");
+                Console.Write($"Targens: {inventory["Targens"]}");
                 Console.Write("-------");
             }
             Console.WriteLine("|");
             Console.WriteLine("|                                      |");
             Console.Write("|");
-            if (inventory["Skooma"] < 10)
+            if (inventory["Dryer Lint"] < 10)
             {
                 Console.Write("---");
-                Console.Write($"Skooma: {inventory["Skooma"]}");
+                Console.Write($"Dryer Lint: {inventory["Dryer Lint"]}");
                 Console.Write("-------");
             }
-            else if (inventory["Skooma"] >= 10 && inventory["Skooma"] < 100)
+            else if (inventory["Dryer Lint"] >= 10 && inventory["Dryer Lint"] < 100)
             {
                 Console.Write("---");
-                Console.Write($"Skooma: {inventory["Skooma"]}");
+                Console.Write($"Dryer Lint: {inventory["Dryer Lint"]}");
                 Console.Write("------");
             }
 
-            if (inventory["Lulu"] < 10)
+            if (inventory["Fuel"] < 10)
             {
                 Console.Write("---");
-                Console.Write($"Lulu: {inventory["Lulu"]}");
+                Console.Write($"LuluFuel {inventory["Fuel"]}");
                 Console.Write("---------");
             }
-            else if (inventory["Lulu"] >= 10 && inventory["Lulu"] < 100)
+            else if (inventory["Fuel"] >= 10 && inventory["Fuel"] < 100)
             {
                 Console.Write("---");
-                Console.Write($"Lulu: {inventory["Lulu"]}");
+                Console.Write($"Fuel: {inventory["Fuel"]}");
                 Console.Write("-------");
             }
 

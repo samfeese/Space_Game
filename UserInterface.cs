@@ -57,7 +57,10 @@ namespace Space_Game
 
         }
 
-
+        public void InventoryShow()
+        {
+           
+        }
         public void PlanetOptions()
         {
             Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
@@ -65,7 +68,7 @@ namespace Space_Game
 
             if (input.Key != ConsoleKey.Escape)
             {
-                planetPhase.PlanetMenu();
+                //planetPhase.PlanetMenu();
                 //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
                 //handOver.InventoryArt();
             }

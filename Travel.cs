@@ -105,7 +105,7 @@ namespace Space_Game
         public void NormalTravel()
         {
             Console.WriteLine("You made your journey with no major incident and thank the Space Gods for smooth sailing.");
-            UpKeep();
+            //UpKeep();
             
         }
 
@@ -155,7 +155,7 @@ namespace Space_Game
                 
                 Console.WriteLine("Your decision was favorable and you found some money along the way!");
                 moneyGained = 1000;
-                UpKeep();
+                //UpKeep();
             }
 
         }
