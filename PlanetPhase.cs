@@ -6,7 +6,7 @@ namespace Space_Game
 {
     class PlanetPhase
     {
-        Inventory goods;
+        public Inventory goods;
 
         public Dictionary<char, string> myGoods;
         public Dictionary<char, int> myLoad;

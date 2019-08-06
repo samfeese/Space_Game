@@ -36,6 +36,13 @@ namespace Space_Game
             move = new Travel();
             trade = new PlanetPhase();
             move.setShip(character1.currentAge);
+
+            Dialog.StartGameDialog();
+
+
+            trade.goods.ItemChange(50, 's');
+
+
             Console.Clear();
            
             do
