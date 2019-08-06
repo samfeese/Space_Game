@@ -17,7 +17,7 @@ namespace Space_Game
 
         public decimal assets;
         public string itemChanged;
-
+        public Dictionary<char, decimal> priceValues = new Dictionary<char, decimal>();
 
         decimal itemPrice = 10;
 
@@ -39,6 +39,7 @@ namespace Space_Game
             Console.WriteLine("2. Sell");
 
             var input = Console.ReadKey();
+            Console.WriteLine();
 
             switch (input.Key)
             {
@@ -55,25 +56,54 @@ namespace Space_Game
         }
 
 
+        public void SetDictionary()
+        {
+            priceValues.Add('s', 10);
+            priceValues.Add('l', 10);
+            priceValues.Add('b', 10);
+            priceValues.Add('t', 10);
+            priceValues.Add('d', 10);
+            priceValues.Add('f', 10);
+        } 
         public void DisplayGoods()
         {
-           
-            
 
-            Console.WriteLine($"1: {goods.goodsName['s']} - ${RandomMod()}");
-            Console.WriteLine($"2: {goods.goodsName['l']} - ${RandomMod()}");
-            Console.WriteLine($"3: {goods.goodsName['b']} - ${RandomMod()}");
-            Console.WriteLine($"4: {goods.goodsName['t']} - ${RandomMod()}");
-            Console.WriteLine($"5: {goods.goodsName['d']} - ${RandomMod()}");
-            Console.WriteLine($"6: {goods.goodsName['f']} - ${RandomMod()}");
+
+           
+
+            decimal addList;
+            addList = itemPrice * RandomMod();
+            Console.WriteLine($"1: {goods.goodsName['s']} - ${addList}");
+            priceValues['s'] = addList;
+
+            addList = itemPrice * RandomMod();
+            Console.WriteLine($"2: {goods.goodsName['l']} - ${addList}");
+            priceValues['l'] = addList;
+
+            addList = itemPrice * RandomMod();
+            Console.WriteLine($"3: {goods.goodsName['b']} - ${addList}");
+            priceValues['b'] = addList;
+
+            addList = itemPrice * RandomMod();
+            Console.WriteLine($"4: {goods.goodsName['t']} - ${addList}");
+            priceValues['t'] = addList;
+
+            addList = itemPrice * RandomMod();
+            Console.WriteLine($"5: {goods.goodsName['d']} - ${addList}");
+            priceValues['d'] = addList;
+
+            addList = itemPrice * RandomMod();
+            Console.WriteLine($"6: {goods.goodsName['f']} - ${addList}");
+            priceValues['f'] = addList;
+            
+            
         }
-        public decimal RandomMod()
+        private decimal RandomMod()
         {
             Random rand = new Random();
-            itemPrice = 10;
+            
             decimal mod = Convert.ToDecimal(rand.Next(0, 1) + rand.NextDouble());
-            itemPrice *= mod;
-            return itemPrice;
+            return mod;
            
         }
           
@@ -84,42 +114,73 @@ namespace Space_Game
 
             Console.WriteLine("\nSelect and item to buy: ");
             Console.WriteLine();
+
+           
             DisplayGoods();
 
+            Console.WriteLine();
+            Console.WriteLine($"Your current fortune is {Character.currentMoney}");
             var input = Console.ReadKey();
+
+            Console.WriteLine();
+
             Console.WriteLine("How many?");
+            
             var quanity = int.Parse(Console.ReadLine());
-           
+
+
+         
+
+            bill = 0;
+
+            
+          
+            char temp;
+
             switch (input.Key)
             {
                 case ConsoleKey.D1:
+                    temp = 's';
+                    if (Character.currentMoney < (quanity * priceValues[temp]))
+                    {
+                        Console.WriteLine("You do not have enough money you dummy, take math again.");
+                        break;
+                    }
                     goods.ItemChange(quanity, 's');
-                    bill += quanity * itemPrice;
+                   
+                    bill = (-1) * (quanity * priceValues[temp]);
                     break;
+                  
 
                 case ConsoleKey.D2:
                     goods.ItemChange(quanity, 'l');
-                    bill += quanity * itemPrice;
+                    temp = 'l';
+                    bill = (-1) * (quanity * priceValues[temp]);
                     break;
                  
                 case ConsoleKey.D3:
                     goods.ItemChange(quanity, 'b');
-                    bill += quanity * itemPrice;
+                    temp = 'b';
+                    bill = (-1) * (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D4:
                     goods.ItemChange(quanity, 't');
-                    bill += quanity * itemPrice;
+                    temp = 't';
+                    bill = (-1) * (quanity * priceValues[temp]);
                     break;
                 case ConsoleKey.D5:
                     goods.ItemChange(quanity, 'd');
-                    bill += quanity * itemPrice;
+                    temp = 'd';
+                    bill = (-1) * (quanity * priceValues[temp]);
                     break;
                 default:
                   
                     break;
             }
-          
+            Console.WriteLine($"Your total is {bill}");
+            Character.Profit(bill);
+
             Console.WriteLine("Do you wanna buy more items? Y/N");
             var choice = Console.ReadKey();
             
@@ -140,39 +201,47 @@ namespace Space_Game
 
             DisplayGoods();
             var input = Console.ReadKey();
-
+            Console.WriteLine();
             Console.WriteLine("How many?");
             var quanity = int.Parse(Console.ReadLine());
-            
+            bill = 0;
+            char temp;
             switch (input.Key)
             {
                 case ConsoleKey.D1:
                     goods.ItemChange((quanity * (-1)), 's');
-                    profit += quanity * itemPrice;
+                    temp = 's';
+                    bill = (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D2:
                     goods.ItemChange((quanity * (-1)), 'l');
-                    profit += quanity * itemPrice;
+                    temp = 'l';
+                    bill = (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D3:
                     goods.ItemChange((quanity * (-1)), 'b');
-                    profit += quanity * itemPrice;
+                    temp = 'b';
+                    bill = (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D4:
                     goods.ItemChange((quanity * (-1)), 't');
-                    profit += quanity * itemPrice;
+                    temp = 't';
+                    bill = (quanity * priceValues[temp]);
                     break;
                 case ConsoleKey.D5:
                     goods.ItemChange((quanity * (-1)), 'd');
-                    profit += quanity * itemPrice;
+                    temp = 'd';
+                    bill = (quanity * priceValues[temp]);
                     break;
                 default:
 
                     break;
             }
+            Console.WriteLine($"Your total is {bill}");
+            Character.Profit(bill);
 
             Console.WriteLine("Do you wanna sell more items? Y/N");
             var choice = Console.ReadKey();
@@ -200,20 +269,15 @@ namespace Space_Game
             Console.WriteLine($"4: {myGoods['t']} - {myLoad['t']}");
             Console.WriteLine($"5: {myGoods['d']} - {myLoad['d']}");
 
-            var a= myLoad['s'] * itemPrice;
-            var b= myLoad['l'] * itemPrice;
-            var c= myLoad['b'] * itemPrice;
-            var d= myLoad['t'] * itemPrice;
-            var e= myLoad['d'] * itemPrice;
+            var a= myLoad['s'] * priceValues['s'];
+            var b= myLoad['l'] * priceValues['l'];
+            var c= myLoad['b'] * priceValues['b'];
+            var d= myLoad['t'] * priceValues['t'];
+            var e= myLoad['d'] * priceValues['d'];
 
             assets = (a + b + c + d + e);
 
             Console.WriteLine($"The value of my inventory is ${assets}");
-
-            //foreach (var item in myLoad)
-            //{
-            //    assets += myLoad * itemPrice;
-            //}
 
         }
        

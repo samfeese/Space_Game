@@ -16,7 +16,6 @@ namespace Space_Game
 
         public Universe()
         {
-
             planet3 = new Planet();
             planet4 = new Planet();
             planet5 = new Planet();

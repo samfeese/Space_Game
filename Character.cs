@@ -10,7 +10,7 @@ namespace Space_Game
 
        public string userName;
        public int currentAge;
-       public decimal currentMoney;
+       public static decimal currentMoney;
        public double fuelFactor;
         public double currentfuelLevel; 
        public double capacity;
@@ -62,7 +62,7 @@ namespace Space_Game
 
         public void FuelAfterTravel(double expandedFuel) => currentfuelLevel -= expandedFuel;
 
-        public void Profit(decimal profit) => currentMoney += profit;
+        public static void Profit(decimal bill) => currentMoney += bill;
 
         public void Expenses(decimal bill) => currentMoney -= bill;
 

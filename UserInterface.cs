@@ -36,7 +36,7 @@ namespace Space_Game
             move = new Travel();
             trade = new PlanetPhase();
             move.setShip(character1.currentAge);
-
+            trade.SetDictionary();
             //Dialog.StartGameDialog();
 
 
@@ -48,7 +48,7 @@ namespace Space_Game
             do
             {
                 MainMenu();
-                if ((character1.currentAge > 60) || (character1.currentMoney < 1 && trade.assets < 10))
+                if ((character1.currentAge > 60) || (Character.currentMoney < 1 && trade.assets < 10))
                 {
                     gameOver = true;
                 }
@@ -61,20 +61,29 @@ namespace Space_Game
 
         public void MainMenu()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("A. To Move To another planet  ||B. To start trading on this Planet  ||C. To see your current stats ||F1. To end the game");
+            Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine("A. To Move To another planet  ||B. To start trading on this Planet   || C. To see your current stats || F1. To end the game");
+
+
             var selection = Console.ReadKey();
+            Console.WriteLine();
 
             switch (selection.Key)
             {
                 case ConsoleKey.A:
                     Console.Clear();
                     move.TravelMenu();
+                    character1.Aging(Convert.ToInt32(Math.Round(move.travelTime)));
+                    character1.FuelAfterTravel(move.fuelCost);
                     break;
                 case ConsoleKey.B:
                     Console.Clear();
                     trade.PlanetMenu();
+                    //Character.Profit(trade.bill);
                     trade.InventoryUpKeep();
+
                     break;
                 case ConsoleKey.C:
                     Console.Clear();
@@ -89,19 +98,12 @@ namespace Space_Game
                     break;
 
             }
-            upKeep();
+           
 
 
         }
 
-        public void upKeep()
-        {
-            int ageChange = Convert.ToInt32(Math.Round(move.travelTime));
-            character1.Expenses(trade.bill);
-            character1.Profit(trade.profit);
-            character1.Aging(ageChange);
-            character1.currentfuelLevel -= move.fuelCost; 
-        }
+       
 
         
         public void InventoryShow()

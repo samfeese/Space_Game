@@ -67,6 +67,8 @@ namespace Space_Game
 
                 Console.WriteLine("Do you want to proceed? Y/N");
                 var confirm = Console.ReadKey();
+                Console.WriteLine(      );
+                Console.WriteLine();
 
                 if (confirm.Key == ConsoleKey.N)
                 {
@@ -76,8 +78,9 @@ namespace Space_Game
                 }
                 else
                 {
+                    RandomEvent();
                     currentPlanet = goPlanet;
-
+                   
                 }
 
 
@@ -91,11 +94,11 @@ namespace Space_Game
 
         void DisplayPlanets()
         {
-            Console.WriteLine($"1.{galaxy.earth.planetName} ");
-            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} ");
-            Console.WriteLine($"3.{galaxy.planet3.planetName} ");
-            Console.WriteLine($"4.{galaxy.planet4.planetName} ");
-            Console.WriteLine($"5.{galaxy.planet5.planetName} ");
+            Console.WriteLine($"1.{galaxy.earth.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.earth.planetCoordinate)} ");
+            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.alphaProxima.planetCoordinate)}");
+            Console.WriteLine($"3.{galaxy.planet3.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet3.planetCoordinate)}");
+            Console.WriteLine($"4.{galaxy.planet4.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet4.planetCoordinate)}");
+            Console.WriteLine($"5.{galaxy.planet5.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet5.planetCoordinate)}");
         }
                
         
@@ -106,11 +109,7 @@ namespace Space_Game
             return travelTime;
         }
 
-        //public double Fuel(double distance, double fuelConsumption)
-        //{
-        //    fuelCost = distance * fuelConsumption;
-        //    return fuelCost;
-        //}
+       
         public void PlanetChoice(ConsoleKeyInfo choice)
         {
 
@@ -165,7 +164,7 @@ namespace Space_Game
             }
             else if (thing == 0 && action != 10)
             {
-                //space pirates
+                SpacePirates();
             }
             else if (action == 10)
             {
@@ -179,12 +178,13 @@ namespace Space_Game
         public void NormalTravel()
         {
             Console.WriteLine("You made your journey with no major incident and thank the Space Gods for smooth sailing.");
-            //UpKeep();
+            
             
         }
 
         public void SpacePirates()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Along your journey, you come across a floating shit that appears to be abandonded.");
             Console.WriteLine("\n What would you like to do? F1: Investigate  F2: Ignore and move on");
             var input = Console.ReadKey();
@@ -198,12 +198,14 @@ namespace Space_Game
                 if (win)
                 {
                     Console.WriteLine("Congratulations you Won! you salvaged their ship and come home with more money!");
-                    moneyGained = 1000;
+                    decimal bill = 1000;
+                    Character.Profit(bill);
                 }
                 else
                 {
                     Console.WriteLine("The Pirates bested you but left you alive, they took money to compensate though.");
-                    moneyGained = -1000;
+                    decimal bill = -1000;
+                    Character.Profit(bill);
                 }
             }
             else if ((input.Key == ConsoleKey.F2 && randomNum % 2 != 0))
@@ -213,13 +215,14 @@ namespace Space_Game
                 if (win)
                 {
                     Console.WriteLine("Congratulations you Won! you salvaged their ship and come home with more money!");
-                    moneyGained = 1000;
-                    
+                    decimal bill = 1000;
+                    Character.Profit(bill);
                 }
                 else
                 {
                     Console.WriteLine("The Pirates bested you but left you alive, they took money to compensate though.");
-                    moneyGained = -1000;
+                    decimal bill = -1000;
+                    Character.Profit(bill);
                 }
                 Console.WriteLine();
 
@@ -228,17 +231,20 @@ namespace Space_Game
             {
                 
                 Console.WriteLine("Your decision was favorable and you found some money along the way!");
-                moneyGained = 1000;
-                //UpKeep();
+                decimal bill = 1000;
+                Character.Profit(bill);
             }
-
+            Console.ForegroundColor = ConsoleColor.White;
         }
         public bool MiniGame()
         {
             Random rng = new Random();
 
             var player = rng.Next(0, 100);
+            
             Console.WriteLine($"You roll the number {player} ! ");
+
+            Console.WriteLine() ;
 
             var pirates = rng.Next(0, 100);
             Console.WriteLine($"The Pirates roll the number {pirates} !");
