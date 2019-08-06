@@ -77,37 +77,33 @@ namespace Space_Game
             var input = Console.ReadKey();
             Console.WriteLine("How many?");
             var quanity = int.Parse(Console.ReadLine());
-           
+            profit = 0;
             switch (input.Key)
             {
                 case ConsoleKey.D1:
                     goods.ItemChange(quanity, 's');
-                    bill += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D2:
                     goods.ItemChange(quanity, 'l');
-                    bill += quanity * itemPrice;
                     break;
                  
                 case ConsoleKey.D3:
                     goods.ItemChange(quanity, 'b');
-                    bill += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D4:
                     goods.ItemChange(quanity, 't');
-                    bill += quanity * itemPrice;
                     break;
                 case ConsoleKey.D5:
                     goods.ItemChange(quanity, 'd');
-                    bill += quanity * itemPrice;
                     break;
                 default:
                   
                     break;
             }
-          
+            profit = (-1) * (quanity * itemPrice);
+
             Console.WriteLine("Do you wanna buy more items? Y/N");
             var choice = Console.ReadKey();
             
@@ -131,36 +127,32 @@ namespace Space_Game
 
             Console.WriteLine("How many?");
             var quanity = int.Parse(Console.ReadLine());
-
+            profit = 0;
             switch (input.Key)
             {
                 case ConsoleKey.D1:
                     goods.ItemChange((quanity * (-1)), 's');
-                    profit += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D2:
                     goods.ItemChange((quanity * (-1)), 'l');
-                    profit += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D3:
                     goods.ItemChange((quanity * (-1)), 'b');
-                    profit += quanity * itemPrice;
                     break;
 
                 case ConsoleKey.D4:
                     goods.ItemChange((quanity * (-1)), 't');
-                    profit += quanity * itemPrice;
                     break;
                 case ConsoleKey.D5:
                     goods.ItemChange((quanity * (-1)), 'd');
-                    profit += quanity * itemPrice;
                     break;
                 default:
 
                     break;
             }
+            profit =(quanity * itemPrice);
 
             Console.WriteLine("Do you wanna sell more items? Y/N");
             var choice = Console.ReadKey();
@@ -196,28 +188,7 @@ namespace Space_Game
 
             Console.WriteLine($"The value of my inventory is ${assets}");
 
-            //foreach (var item in myLoad)
-            //{
-            //    assets += myLoad * itemPrice;
-            //}
-
         }
-        //public void ItemsTraded(string itemName, int quanity)
-        //{
-
-        //    if (quanity <= 0)
-        //    {
-        //        itemChanged = itemName;
-        //        addToInventory =  quanity;
-
-        //    }
-        //    if (quanity > 0)
-        //    {
-        //        itemChanged = itemName;
-        //        addToInventory = quanity;
-        //    }
-
-        //}
 
     }
 }

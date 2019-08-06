@@ -62,7 +62,7 @@ namespace Space_Game
 
         public void FuelAfterTravel(double expandedFuel) => currentfuelLevel -= expandedFuel;
 
-        public void Profit(decimal profit) => currentMoney += profit;
+        public void Profit(decimal bill) => currentMoney += bill;
 
         public void Expenses(decimal bill) => currentMoney -= bill;
 

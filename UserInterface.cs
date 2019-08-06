@@ -49,16 +49,13 @@ namespace Space_Game
 
             } while (!gameOver);
 
-            //galaxy1.ship.ShipType(character1.startAge);
-
-            //Console.WriteLine($"Hey {character1.userName}");
-            //character1.SetShip();
+            
         }
 
         public void MainMenu()
         {
 
-            Console.WriteLine("A. To Move To another planet  ||B. To start trading on this Planet   || C. To see your current stats || F1. To end the game");
+            Console.WriteLine("A. To Move To another planet  ||B. To start trading on this Planet  ||C. To see your current stats ||F1. To end the game");
             var selection = Console.ReadKey();
 
             switch (selection.Key)
@@ -66,11 +63,15 @@ namespace Space_Game
                 case ConsoleKey.A:
                     Console.Clear();
                     move.TravelMenu();
+                    character1.Aging(Convert.ToInt32(Math.Round(move.travelTime)));
+                    character1.FuelAfterTravel(move.fuelCost);
                     break;
                 case ConsoleKey.B:
                     Console.Clear();
                     trade.PlanetMenu();
+                    character1.Profit(trade.bill);
                     trade.InventoryUpKeep();
+
                     break;
                 case ConsoleKey.C:
                     Console.Clear();
@@ -85,19 +86,12 @@ namespace Space_Game
                     break;
 
             }
-            upKeep();
+           
 
 
         }
 
-        public void upKeep()
-        {
-            int ageChange = Convert.ToInt32(Math.Round(move.travelTime));
-            character1.Expenses(trade.bill);
-            character1.Profit(trade.profit);
-            character1.Aging(ageChange);
-            character1.currentfuelLevel -= move.fuelCost; 
-        }
+       
 
         
         public void InventoryShow()
