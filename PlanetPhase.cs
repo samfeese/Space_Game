@@ -6,7 +6,7 @@ namespace Space_Game
 {
     class PlanetPhase
     {
-        Inventory goods;
+        public Inventory goods;
 
         public Dictionary<char, string> myGoods;
         public Dictionary<char, int> myLoad;
@@ -131,7 +131,7 @@ namespace Space_Game
 
             Console.WriteLine("How many?");
             var quanity = int.Parse(Console.ReadLine());
-
+            
             switch (input.Key)
             {
                 case ConsoleKey.D1:
