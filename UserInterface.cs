@@ -37,7 +37,7 @@ namespace Space_Game
             trade = new PlanetPhase();
             move.setShip(character1.currentAge);
 
-            Dialog.StartGameDialog();
+            //Dialog.StartGameDialog();
 
 
             trade.goods.ItemChange(50, 's');
@@ -112,45 +112,10 @@ namespace Space_Game
         
 
      
-        public void Explore()
-        {
-
-            //move = new Travel(galaxy1.distance, character1.velocity, galaxy1.fuelBetweenPlanets);
-            //fuelCostOfTravel = move.fuelCost;
-            //timeTraveling = move.travelTime;
-            //move.PlanetChoice(planetChoice);
-
-           // Console.WriteLine($"The distance between {move.currentPlanet.Item1} and {move.goPlanet.Item1} is {move.travelDistance} Light years");
+        
 
 
-            //do
-            //{
-
-
-            //    galaxy1.ship.Speed(warpFactor);
-
-            //    galaxy1.ship.TravelTime(galaxy1.MovePlanet());
-
-            //    Console.WriteLine(galaxy1.ship.velocity);
-
-            //    Console.WriteLine($"\nAt Warp {warpFactor} it will take you {galaxy1.ship.travelTime} Years");
-            //} while (input.Key != ConsoleKey.Escape);
-
-
-            animation.ShipArtVertical();
-            animation.ShipArtHorz();
-
-
-
-
-        }
-
-
-        //public void ChangeInventory(int valueOfItem)
-        //{
-        //    handOver.ItemA(valueOfItem, handOver.skooma);
-        //    Console.WriteLine($"{handOver.skooma.Item2}");
-        //}
+       
 
 
     }

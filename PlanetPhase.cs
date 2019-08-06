@@ -18,6 +18,7 @@ namespace Space_Game
         public decimal assets;
         public string itemChanged;
 
+
         decimal itemPrice = 10;
 
         public PlanetPhase()
@@ -56,14 +57,25 @@ namespace Space_Game
 
         public void DisplayGoods()
         {
-            Console.WriteLine($"1: {goods.goodsName['s']} - ${itemPrice}");
-            Console.WriteLine($"2: {goods.goodsName['l']} - ${itemPrice}");
-            Console.WriteLine($"3: {goods.goodsName['b']} - ${itemPrice}");
-            Console.WriteLine($"4: {goods.goodsName['t']} - ${itemPrice}");
-            Console.WriteLine($"5: {goods.goodsName['d']} - ${itemPrice}");
-            Console.WriteLine($"6: {goods.goodsName['f']} - ${itemPrice}");
-        }
+           
+            
 
+            Console.WriteLine($"1: {goods.goodsName['s']} - ${RandomMod()}");
+            Console.WriteLine($"2: {goods.goodsName['l']} - ${RandomMod()}");
+            Console.WriteLine($"3: {goods.goodsName['b']} - ${RandomMod()}");
+            Console.WriteLine($"4: {goods.goodsName['t']} - ${RandomMod()}");
+            Console.WriteLine($"5: {goods.goodsName['d']} - ${RandomMod()}");
+            Console.WriteLine($"6: {goods.goodsName['f']} - ${RandomMod()}");
+        }
+        public decimal RandomMod()
+        {
+            Random rand = new Random();
+            itemPrice = 10;
+            decimal mod = Convert.ToDecimal(rand.Next(0, 1) + rand.NextDouble());
+            itemPrice *= mod;
+            return itemPrice;
+           
+        }
           
 
         public void ShopBuy()
@@ -188,11 +200,13 @@ namespace Space_Game
             Console.WriteLine($"4: {myGoods['t']} - {myLoad['t']}");
             Console.WriteLine($"5: {myGoods['d']} - {myLoad['d']}");
 
-            assets += myLoad['s'] * itemPrice;
-            assets += myLoad['l'] * itemPrice;
-            assets += myLoad['b'] * itemPrice;
-            assets += myLoad['t'] * itemPrice;
-            assets += myLoad['d'] * itemPrice;
+            var a= myLoad['s'] * itemPrice;
+            var b= myLoad['l'] * itemPrice;
+            var c= myLoad['b'] * itemPrice;
+            var d= myLoad['t'] * itemPrice;
+            var e= myLoad['d'] * itemPrice;
+
+            assets = (a + b + c + d + e);
 
             Console.WriteLine($"The value of my inventory is ${assets}");
 
@@ -202,22 +216,6 @@ namespace Space_Game
             //}
 
         }
-        //public void ItemsTraded(string itemName, int quanity)
-        //{
-
-        //    if (quanity <= 0)
-        //    {
-        //        itemChanged = itemName;
-        //        addToInventory =  quanity;
-
-        //    }
-        //    if (quanity > 0)
-        //    {
-        //        itemChanged = itemName;
-        //        addToInventory = quanity;
-        //    }
-
-        //}
-
+       
     }
 }
