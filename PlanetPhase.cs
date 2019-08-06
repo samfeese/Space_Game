@@ -23,7 +23,7 @@ namespace Space_Game
         public PlanetPhase()
         {
             goods = new Inventory();
-            PlanetMenu();
+            //PlanetMenu();
             InventoryUpKeep();
         }
       
@@ -176,11 +176,12 @@ namespace Space_Game
         {
             myGoods = goods.goodsName;
             myLoad = goods.goodsQuantity;
-            DisplayMyInventory();
+            //DisplayMyInventory();
         }
 
         public void DisplayMyInventory()
         {
+            Console.WriteLine("You currently have the following in your inventory");
             Console.WriteLine($"1: {myGoods['s']} - {myLoad['s']}");
             Console.WriteLine($"2: {myGoods['l']} - {myLoad['l']}");
             Console.WriteLine($"3: {myGoods['b']} - {myLoad['b']}");

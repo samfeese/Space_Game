@@ -7,12 +7,9 @@ namespace Space_Game
     class UserInterface
     {
         public string characterName;
-        public int currentAge;
-        public decimal currentMoney;
-        public double fuelCostOfTravel;
-        public double timeTraveling;
+        
         Random random = new Random();
-
+        bool gameOver = false;
 
         Character character1;
        // Universe galaxy1;
@@ -21,7 +18,7 @@ namespace Space_Game
         ShipArt animation = new ShipArt();
 
        
-
+       
         public void UIstart()
         {
             Console.WriteLine("Please enter you character name: ");
@@ -35,16 +32,62 @@ namespace Space_Game
             int userCharClass = int.Parse(Console.ReadLine());
 
             character1 = new Character(characterName, userCharClass);
-            trade = new PlanetPhase();
-            move = new Travel();
-            Console.Clear();
-            InventoryShow();
             
+            move = new Travel();
+            trade = new PlanetPhase();
+            move.setShip(character1.currentAge);
+            Console.Clear();
+           
+            do
+            {
+                MainMenu();
+                if ((character1.currentAge > 60) || (character1.currentMoney < 1 && trade.assets < 10))
+                {
+                    gameOver = true;
+                }
+
+
+            } while (!gameOver);
 
             //galaxy1.ship.ShipType(character1.startAge);
 
             //Console.WriteLine($"Hey {character1.userName}");
             //character1.SetShip();
+        }
+
+        public void MainMenu()
+        {
+
+            Console.WriteLine("A. To Move To another planet  ||B. To start trading on this Planet   || C. To see your current stats || F1. To end the game");
+            var selection = Console.ReadKey();
+
+            switch (selection.Key)
+            {
+                case ConsoleKey.A:
+                    Console.Clear();
+                    move.TravelMenu();
+                    break;
+                case ConsoleKey.B:
+                    Console.Clear();
+                    trade.PlanetMenu();
+                    trade.InventoryUpKeep();
+                    break;
+                case ConsoleKey.C:
+                    Console.Clear();
+                    character1.PlayerStats();
+                    trade.DisplayMyInventory();
+                    break;
+                case ConsoleKey.F1:
+                    gameOver = true;
+                    break;
+                default:
+                    MainMenu();
+                    break;
+
+            }
+            upKeep();
+
+
         }
 
         public void upKeep()
@@ -53,6 +96,7 @@ namespace Space_Game
             character1.Expenses(trade.bill);
             character1.Profit(trade.profit);
             character1.Aging(ageChange);
+            character1.currentfuelLevel -= move.fuelCost; 
         }
 
         
@@ -60,22 +104,7 @@ namespace Space_Game
         {
             trade.DisplayMyInventory();
         }
-        public void PlanetOptions()
-        {
-            Console.WriteLine("press <Enter> to Shop or <Esc> to go to another planet");
-            var input = Console.ReadKey();
-
-            if (input.Key != ConsoleKey.Escape)
-            {
-                //planetPhase.PlanetMenu();
-                //handOver.ItemChange(planetPhase.addToInventory, planetPhase.itemChanged);
-
-                //handOver.InventoryArt();
-            }
-            //galaxy1.PlanetChoice();
-            //Explore();
-        }
-
+     
         
 
      

@@ -67,5 +67,12 @@ namespace Space_Game
         public void Expenses(decimal bill) => currentMoney -= bill;
 
         public void Aging(int traveltime) => currentAge += traveltime;
+
+        public void PlayerStats()
+        {
+            Console.WriteLine($"You are {currentAge} years old ");
+            Console.WriteLine($"You currently have a fortune of ${currentMoney}");
+            Console.WriteLine($"Your fuel level is {currentfuelLevel}");
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace Space_Game
         public void Speed(double warpFactor)
         {
             double baseVelocity = Math.Pow(warpFactor, (10 / 3)) + Math.Pow((10 - warpFactor), (-11 / 3));
-            velocity = baseVelocity;// * speedModify;
+            velocity = baseVelocity * speedModify;
         }
 
         public void FuelConsumption()

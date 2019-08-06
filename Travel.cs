@@ -31,12 +31,17 @@ namespace Space_Game
             galaxy = new Universe();
             ship = new Ship();
             currentPlanet = galaxy.earth;
-            TravelMenu();
+           // TravelMenu();
 
 
         }
 
-       
+       public void setShip(int age)
+        {
+            ship.ShipType(age);
+            ship.FuelConsumption();
+
+        }
         public void TravelMenu()
         {
             Console.WriteLine("Which Planet do you want to go to? ");
@@ -58,7 +63,7 @@ namespace Space_Game
                 Console.WriteLine();
                 Console.WriteLine($"At the speed of {ship.velocity} , it will take you " +
                                   $"{TravelTime(galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate), ship.velocity)}" +
-                                  $" to reach your destination");
+                                  $" to reach your destination and it will cost you {fuelCost} in fuel");
 
                 Console.WriteLine("Do you want to proceed? Y/N");
                 var confirm = Console.ReadKey();
@@ -101,11 +106,11 @@ namespace Space_Game
             return travelTime;
         }
 
-        public double Fuel(double distance, double fuelConsumption)
-        {
-            fuelCost = distance * fuelConsumption;
-            return fuelCost;
-        }
+        //public double Fuel(double distance, double fuelConsumption)
+        //{
+        //    fuelCost = distance * fuelConsumption;
+        //    return fuelCost;
+        //}
         public void PlanetChoice(ConsoleKeyInfo choice)
         {
 
@@ -142,6 +147,7 @@ namespace Space_Game
         {
             travelDistance = galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate);
             TravelTime(travelDistance, ship.velocity);
+           
             fuelCost = galaxy.FuelBetweenPlanet(ship.fuelConsumption, travelDistance);
         }
        
