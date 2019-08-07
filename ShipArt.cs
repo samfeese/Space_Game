@@ -71,7 +71,7 @@ namespace Space_Game
             Console.WriteLine();
 
         }
-        public void ShipArtHorz()
+        public static void ShipArtHorz()
         {
             Console.WriteLine("You pull out your communicator and say, 'Scotty, one to beam up'");
 
@@ -163,7 +163,7 @@ namespace Space_Game
                 Console.Write(f);
                 Console.WriteLine();
 
-                Thread.Sleep(500);
+                Thread.Sleep(300);
                 Console.Clear();
 
                 i++;
@@ -174,7 +174,7 @@ namespace Space_Game
             }
         }
 
-        public void EarthArt()
+        public static void EarthArt()
         {
 
             Console.WriteLine();

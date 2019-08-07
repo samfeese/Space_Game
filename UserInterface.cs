@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Threading;
 namespace Space_Game
 {
     class UserInterface
@@ -17,10 +17,31 @@ namespace Space_Game
         PlanetPhase trade;
         ShipArt animation = new ShipArt();
 
-       
-       
+        //private static void StarWars()
+        //{
+        //    Console.Beep(300, 500);
+        //    Thread.Sleep(50);
+        //    Console.Beep(300, 500);
+        //    Thread.Sleep(50);
+        //    Console.Beep(300, 500);
+        //    Thread.Sleep(50);
+        //    Console.Beep(250, 500);
+        //    Thread.Sleep(50);
+        //    Console.Beep(350, 250);
+        //    Console.Beep(300, 500);
+        //    Thread.Sleep(50);
+        //    Console.Beep(250, 500);
+        //    Thread.Sleep(50);
+        //    Console.Beep(350, 250);
+        //    Console.Beep(300, 500);
+        //    Thread.Sleep(50);
+        //}
+
+
         public void UIstart()
         {
+            StarWars();
+
             Console.WriteLine("Please enter you character name: ");
             characterName = Console.ReadLine();
 

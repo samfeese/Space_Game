@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Space_Game
 {
@@ -78,8 +79,10 @@ namespace Space_Game
                 }
                 else
                 {
+
                     RandomEvent();
                     currentPlanet = goPlanet;
+
                    
                 }
 
@@ -160,11 +163,19 @@ namespace Space_Game
             int thing = action % 2;
             if (thing == 1)
             {
+                ShipArt.ShipArtHorz();
                 NormalTravel();
+                ShipArt.EarthArt();
+                Thread.Sleep(2000);
             }
             else if (thing == 0 && action != 10)
             {
+                ShipArt.ShipArtHorz();
                 SpacePirates();
+                ShipArt.ShipArtHorz();
+                ShipArt.EarthArt();
+                Thread.Sleep(2000);
+
             }
             else if (action == 10)
             {
