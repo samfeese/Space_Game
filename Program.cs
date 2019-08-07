@@ -17,14 +17,9 @@ namespace Space_Game
             Console.Clear();
             ui.UIstart();
 
-            // Inventory.InventoryArt();
-            //display.ShipArtVertical();
-            //Thread.Sleep(1000);
-            //Console.Clear();
+       
 
-
-            // talk.StartGameDialog();
-
+          
 
 
         }

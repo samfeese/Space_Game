@@ -16,7 +16,7 @@ namespace Space_Game
 
         public double travelTime;
         public double fuelCost;
-        public double travelDistance;
+        public static double travelDistance;
 
         Planet currentPlanet;
         Planet goPlanet;
@@ -233,7 +233,7 @@ namespace Space_Game
                 else
                 {
                     Console.WriteLine("The Pirates bested you but left you alive, they took money to compensate though.");
-                    decimal bill = -1000;
+                    decimal bill = Character.currentMoney/2;
                     Character.Profit(bill);
                 }
             }
@@ -250,7 +250,7 @@ namespace Space_Game
                 else
                 {
                     Console.WriteLine("The Pirates bested you but left you alive, they took money to compensate though.");
-                    decimal bill = -1000;
+                    decimal bill = Character.currentMoney / 2;
                     Character.Profit(bill);
                 }
                 Console.WriteLine();

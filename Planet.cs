@@ -28,8 +28,8 @@ namespace Space_Game
 
         public void PlanetNameGenerator()
         {
-            List<string> firstName = new List<string> {"a", "b", "c", "d", "e"};
-            List<string> lastName = new List<string> {"z", "y", "x", "w", "v"};
+            List<string> firstName = new List<string> {"Alpha", "Garintus", "Wollnir", "Vectus", "Elevator"};
+            List<string> lastName = new List<string> {"Primus", "Vinturi", "Charenti", "Pollin", "Music"};
 
             planetName = firstName[random.Next(0, 4)] + " " + lastName[random.Next(0, 4)];
         }

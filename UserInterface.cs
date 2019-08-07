@@ -52,6 +52,10 @@ namespace Space_Game
             Console.WriteLine("\nSelect number cooresponding to class");
             int userCharClass = int.Parse(Console.ReadLine());
 
+            //Dialog.StartGameDialog();
+            //Console.WriteLine("Press <Enter> to continue");
+            //Console.ReadLine();
+
             character1 = new Character(characterName, userCharClass);
             
             move = new Travel();

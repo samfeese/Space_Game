@@ -89,7 +89,7 @@ namespace Space_Game
 
 
 
-            while (i < 25)
+            while (i < 12)
             {
 
                 if (i % 2 != 0)

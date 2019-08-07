@@ -65,12 +65,12 @@ namespace Space_Game
             priceValues.Add('d', 10);
             priceValues.Add('f', 10);
         } 
-        public void DisplayGoods()
+        public void DisplayGoodsBuy()
         {
 
 
-           
 
+           
             decimal addList;
             addList = itemPrice * RandomMod();
             Console.WriteLine($"1: {goods.goodsName['s']} - ${addList}");
@@ -92,12 +92,44 @@ namespace Space_Game
             Console.WriteLine($"5: {goods.goodsName['d']} - ${addList}");
             priceValues['d'] = addList;
 
-            addList = itemPrice * RandomMod();
+            addList = 10 * itemPrice * RandomMod();
             Console.WriteLine($"6: {goods.goodsName['f']} - ${addList}");
             priceValues['f'] = addList;
             
             
         }
+        public void DisplayGoodsSell()
+        {
+
+
+            decimal distanceMod = Convert.ToDecimal(Travel.travelDistance / 25);
+            decimal addList;
+
+            addList = distanceMod * itemPrice * RandomMod();
+            Console.WriteLine($"1: {goods.goodsName['s']} - ${addList}");
+            priceValues['s'] = addList;
+
+            addList = distanceMod * itemPrice * RandomMod();
+            Console.WriteLine($"2: {goods.goodsName['l']} - ${addList}");
+            priceValues['l'] = addList;
+
+            addList = distanceMod * itemPrice * RandomMod();
+            Console.WriteLine($"3: {goods.goodsName['b']} - ${addList}");
+            priceValues['b'] = addList;
+
+            addList = distanceMod * itemPrice * RandomMod();
+            Console.WriteLine($"4: {goods.goodsName['t']} - ${addList}");
+            priceValues['t'] = addList;
+
+
+            addList = distanceMod * itemPrice * RandomMod();
+            Console.WriteLine($"5: {goods.goodsName['d']} - ${addList}");
+            priceValues['d'] = addList;
+
+           
+
+        }
+
         private decimal RandomMod()
         {
             Random rand = new Random();
@@ -116,7 +148,7 @@ namespace Space_Game
             Console.WriteLine();
 
            
-            DisplayGoods();
+            DisplayGoodsBuy();
 
             Console.WriteLine();
             Console.WriteLine($"Your current fortune is ${Character.currentMoney}");
@@ -240,7 +272,7 @@ namespace Space_Game
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Pick the item you want to sell :");
-            DisplayGoods();
+            DisplayGoodsSell();
             var input = Console.ReadKey();
             Console.WriteLine();
             Console.WriteLine("How many?");
