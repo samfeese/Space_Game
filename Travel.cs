@@ -12,7 +12,7 @@ namespace Space_Game
         Ship ship;
         Universe galaxy;
         //PlanetPhase planetPhase = new PlanetPhase();
-       
+       //UserInterface ui = new UserInterface();
 
         public double travelTime;
         public double fuelCost;
@@ -49,8 +49,13 @@ namespace Space_Game
             Console.WriteLine("----------------------------------------");
             DisplayPlanets();
 
+            Console.WriteLine();
             planetChoice = Console.ReadKey();
+
+            Console.WriteLine();
             PlanetChoice(planetChoice);
+
+            Console.WriteLine();
 
             Console.WriteLine("Press <Enter> to confirm or <Escape> to cancel:");
             confirmation = Console.ReadKey();
@@ -65,6 +70,15 @@ namespace Space_Game
                 Console.WriteLine($"At the speed of {ship.velocity} , it will take you " +
                                   $"{TravelTime(galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate), ship.velocity)}" +
                                   $" to reach your destination and it will cost you {fuelCost} in fuel");
+
+                if (fuelCost > Character.currentfuelLevel)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("You do not have enough fuel to travel that far that fast.");
+                    Console.WriteLine("\nTry to go to a different planet, or buy more fuel");
+                    TravelMenu();
+
+                }
 
                 Console.WriteLine("Do you want to proceed? Y/N");
                 var confirm = Console.ReadKey();
@@ -115,7 +129,7 @@ namespace Space_Game
        
         public void PlanetChoice(ConsoleKeyInfo choice)
         {
-
+            UserInterface ui = new UserInterface();
             switch (choice.Key)
             {
                 case ConsoleKey.D1:
@@ -149,8 +163,9 @@ namespace Space_Game
         {
             travelDistance = galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate);
             TravelTime(travelDistance, ship.velocity);
-           
-            fuelCost = galaxy.FuelBetweenPlanet(ship.fuelConsumption, travelDistance);
+            var fuel = ship.fuelConsumption * warpFactor;
+            fuelCost = galaxy.FuelBetweenPlanet(fuel, travelDistance);
+            
         }
        
 
@@ -172,6 +187,8 @@ namespace Space_Game
             {
                 ShipArt.ShipArtHorz();
                 SpacePirates();
+                Console.WriteLine("\nPress <enter> to continue");
+                Console.ReadLine();
                 ShipArt.ShipArtHorz();
                 ShipArt.EarthArt();
                 Thread.Sleep(2000);
@@ -196,11 +213,12 @@ namespace Space_Game
         public void SpacePirates()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Along your journey, you come across a floating shit that appears to be abandonded.");
+            Console.WriteLine("Along your journey, you come across a floating ship that appears to be abandonded.");
             Console.WriteLine("\n What would you like to do? F1: Investigate  F2: Ignore and move on");
             var input = Console.ReadKey();
             Random rng = new Random();
             var randomNum = rng.Next(0, 10);
+
 
             if (input.Key == ConsoleKey.F1 && randomNum%2 != 0)
             {
@@ -246,6 +264,7 @@ namespace Space_Game
                 Character.Profit(bill);
             }
             Console.ForegroundColor = ConsoleColor.White;
+           
         }
         public bool MiniGame()
         {

@@ -12,10 +12,10 @@ namespace Space_Game
        public int currentAge;
        public static decimal currentMoney;
        public double fuelFactor;
-        public double currentfuelLevel; 
+        public static double currentfuelLevel; 
        public double capacity;
         public double velocity;
-        
+        public static double currentDebt = 5000000;
 
         public Character(string name, int userCharClass )
         {
@@ -54,13 +54,14 @@ namespace Space_Game
         public void ShipSpecs(double warpFactor)
         {
             ship.ShipType(currentAge);
-           // ship.Speed(warpFactor, ship.speedModify);
             fuelFactor = ship.fuelModify;
-            capacity = ship.loadCapacity;
+           
             velocity = ship.velocity;
         }
 
         public void FuelAfterTravel(double expandedFuel) => currentfuelLevel -= expandedFuel;
+
+        public void FuelAterPurchase(double fuelQuantity) => currentfuelLevel += fuelQuantity;
 
         public static void Profit(decimal bill) => currentMoney += bill;
 

@@ -13,7 +13,7 @@ namespace Space_Game
 
         Character character1;
        // Universe galaxy1;
-        Travel move;
+        public Travel move;
         PlanetPhase trade;
         ShipArt animation = new ShipArt();
 
@@ -40,7 +40,7 @@ namespace Space_Game
 
         public void UIstart()
         {
-            StarWars();
+          
 
             Console.WriteLine("Please enter you character name: ");
             characterName = Console.ReadLine();
@@ -71,9 +71,16 @@ namespace Space_Game
                 MainMenu();
                 if ((character1.currentAge > 60) || (Character.currentMoney < 1 && trade.assets < 10))
                 {
+                    Console.WriteLine("YOU DIED OF OLD AGE and/or YOU DIED BECAUSE YOU LOST ALL OF YOUR MONEY, TRY AGAIN NEXT TIME!");
+
                     gameOver = true;
                 }
+                if ((Character.currentDebt < 0))
+                {
+                    Console.WriteLine("YOU WIN GOOD JOB PAY OFF YOUR SCUMMY FATHER'S DEBT. I HEAR HE IS STILL AROUND SOMEWHERE THOUGH, AND JUST FAKED HIS DEATH TO MAKE YOU PAY!");
 
+                    gameOver = true;
+                }
 
             } while (!gameOver);
 
@@ -82,12 +89,13 @@ namespace Space_Game
 
         public void MainMenu()
         {
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("A. To Move To another planet  ||B. To start trading on this Planet  ||C. To see your current stats ||F1. To end the game");
+            Console.WriteLine("A. To Move To another planet.  || B. To start trading on this Planet.  || C. To see your current stats. || D. Pay off part of Debt || F1. To end the game.");
             Console.ForegroundColor = ConsoleColor.White;
 
 
-
+            Console.WriteLine();
             var selection = Console.ReadKey();
             Console.WriteLine();
 
@@ -98,18 +106,24 @@ namespace Space_Game
                     move.TravelMenu();
                     character1.Aging(Convert.ToInt32(Math.Round(move.travelTime)));
                     character1.FuelAfterTravel(move.fuelCost);
+                   
                     break;
                 case ConsoleKey.B:
                     Console.Clear();
                     trade.PlanetMenu();
                     //Character.Profit(trade.bill);
                     trade.InventoryUpKeep();
+                    character1.FuelAterPurchase(trade.fuelBuy);
 
                     break;
                 case ConsoleKey.C:
                     Console.Clear();
                     character1.PlayerStats();
                     trade.DisplayMyInventory();
+                    break;
+                case ConsoleKey.D:
+                    Console.Clear();
+                    PayOffDebt();
                     break;
                 case ConsoleKey.F1:
                     gameOver = true;
@@ -119,12 +133,44 @@ namespace Space_Game
                     break;
 
             }
-           
+            Console.WriteLine();
 
 
         }
 
-       
+       public void PayOffDebt()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Your current fortune is ${Character.currentMoney}");
+            Console.ForegroundColor=ConsoleColor.Red;
+            Console.WriteLine($"\nYour current Debt is ${Character.currentDebt}");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("\nDo you want to pay off part of your debt with 50% of your fortune? :  Y  or  N");
+            var input = Console.ReadKey();
+            if (input.Key == ConsoleKey.Y)
+            {
+                var wallet = Character.currentMoney / 2;
+                var debt = Character.currentDebt;
+
+                debt -= Convert.ToDouble(wallet);
+
+                Character.currentMoney = wallet;
+
+                Character.currentDebt = debt;
+                Console.WriteLine();
+                Console.WriteLine($"Your new Debt value is {Character.currentDebt}");
+                MainMenu();   
+                
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Make sure to pay off your debt or the Mafia might get mad....");
+                MainMenu();
+            }
+        }
 
         
         public void InventoryShow()

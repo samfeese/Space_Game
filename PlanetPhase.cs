@@ -13,12 +13,12 @@ namespace Space_Game
 
         public int addToInventory;
         public decimal bill;
-        public decimal profit;
+        public double fuelBuy;
 
         public decimal assets;
         public string itemChanged;
         public Dictionary<char, decimal> priceValues = new Dictionary<char, decimal>();
-
+        
         decimal itemPrice = 10;
 
         public PlanetPhase()
@@ -119,7 +119,7 @@ namespace Space_Game
             DisplayGoods();
 
             Console.WriteLine();
-            Console.WriteLine($"Your current fortune is {Character.currentMoney}");
+            Console.WriteLine($"Your current fortune is ${Character.currentMoney}");
             var input = Console.ReadKey();
 
             Console.WriteLine();
@@ -132,7 +132,7 @@ namespace Space_Game
          
 
             bill = 0;
-
+            fuelBuy = 0;
             
           
             char temp;
@@ -153,26 +153,63 @@ namespace Space_Game
                   
 
                 case ConsoleKey.D2:
-                    goods.ItemChange(quanity, 'l');
                     temp = 'l';
+                    if (Character.currentMoney < (quanity * priceValues[temp]))
+                    {
+                        Console.WriteLine("You do not have enough money you dummy, take math again.");
+                        break;
+                    }
+                    goods.ItemChange(quanity, 'l');
+                  
+
                     bill = (-1) * (quanity * priceValues[temp]);
                     break;
                  
                 case ConsoleKey.D3:
-                    goods.ItemChange(quanity, 'b');
                     temp = 'b';
+                    if (Character.currentMoney < (quanity * priceValues[temp]))
+                    {
+                        Console.WriteLine("You do not have enough money you dummy, take math again.");
+                        break;
+                    }
+                    goods.ItemChange(quanity, 'b');
+                 
                     bill = (-1) * (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D4:
-                    goods.ItemChange(quanity, 't');
                     temp = 't';
+                    if (Character.currentMoney < (quanity * priceValues[temp]))
+                    {
+                        Console.WriteLine("You do not have enough money you dummy, take math again.");
+                        break;
+                    }
+                    goods.ItemChange(quanity, 't');
+                   
                     bill = (-1) * (quanity * priceValues[temp]);
                     break;
                 case ConsoleKey.D5:
-                    goods.ItemChange(quanity, 'd');
                     temp = 'd';
+                    if (Character.currentMoney < (quanity * priceValues[temp]))
+                    {
+                        Console.WriteLine("You do not have enough money you dummy, take math again.");
+                        break;
+                    }
+                    goods.ItemChange(quanity, 'd');
+                  
                     bill = (-1) * (quanity * priceValues[temp]);
+                    break;
+                case ConsoleKey.D6:
+                    temp = 'f';
+                    if (Character.currentMoney < (quanity * priceValues[temp]))
+                    {
+                        Console.WriteLine("You do not have enough money you dummy, take math again.");
+                        break;
+                    }
+                    goods.ItemChange(quanity, 'f');
+            
+                    bill = (-1) * (quanity * priceValues[temp]);
+                    fuelBuy = quanity;
                     break;
                 default:
                   
@@ -198,7 +235,11 @@ namespace Space_Game
 
             Console.WriteLine("\nSelect and item to sell: ");
             Console.WriteLine();
-
+           
+            DisplayMyInventory();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Pick the item you want to sell :");
             DisplayGoods();
             var input = Console.ReadKey();
             Console.WriteLine();
@@ -209,31 +250,63 @@ namespace Space_Game
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    goods.ItemChange((quanity * (-1)), 's');
                     temp = 's';
+                    if (goods.goodsQuantity[temp] < quanity)
+                    {
+                        Console.WriteLine("You dont have enought to sell try again.");
+                        break;
+                    }
+
+
+                    goods.ItemChange((quanity * (-1)), 's');
+                   
                     bill = (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D2:
-                    goods.ItemChange((quanity * (-1)), 'l');
                     temp = 'l';
+                    if (goods.goodsQuantity[temp] < quanity)
+                    {
+                        Console.WriteLine("You dont have enought to sell try again.");
+                        break;
+                    }
+                    goods.ItemChange((quanity * (-1)), 'l');
+                   
                     bill = (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D3:
-                    goods.ItemChange((quanity * (-1)), 'b');
                     temp = 'b';
+                    if (goods.goodsQuantity[temp] < quanity)
+                    {
+                        Console.WriteLine("You dont have enought to sell try again.");
+                        break;
+                    }
+                    goods.ItemChange((quanity * (-1)), 'b');
+                  
                     bill = (quanity * priceValues[temp]);
                     break;
 
                 case ConsoleKey.D4:
-                    goods.ItemChange((quanity * (-1)), 't');
                     temp = 't';
+                    if (goods.goodsQuantity[temp] < quanity)
+                    {
+                        Console.WriteLine("You dont have enought to sell try again.");
+                        break;
+                    }
+                    goods.ItemChange((quanity * (-1)), 't');
+                  
                     bill = (quanity * priceValues[temp]);
                     break;
                 case ConsoleKey.D5:
-                    goods.ItemChange((quanity * (-1)), 'd');
                     temp = 'd';
+
+                    if (goods.goodsQuantity[temp] < quanity)
+                    {
+                        Console.WriteLine("You dont have enought to sell try again.");
+                        break;
+                    }
+                    goods.ItemChange((quanity * (-1)), 'd');
                     bill = (quanity * priceValues[temp]);
                     break;
                 default:
@@ -277,7 +350,7 @@ namespace Space_Game
 
             assets = (a + b + c + d + e);
 
-            Console.WriteLine($"The value of my inventory is ${assets}");
+            //Console.WriteLine($"The value of my inventory is ${assets}");
 
         }
        

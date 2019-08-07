@@ -8,11 +8,11 @@ namespace Space_Game
     {
       
         public double velocity;
-        public double loadCapacity;
+       
         public double fuelConsumption;
         
         public double speedModify;
-        public double loadModify;
+       
         public double fuelModify;
        
         public void ShipType(int age)
@@ -22,18 +22,18 @@ namespace Space_Game
             {
                 case 18:
                     speedModify = 1.1;
-                    loadModify = 1.1;
+                    
                     fuelModify = 1;
                     break;
                 case 22:
                     speedModify = 1.5;
-                    loadModify = 1.5;
-                    fuelModify = 0.75;
+                    
+                    fuelModify = 0.85;
                     break;
                 case 26:
                     speedModify = 1.9;
-                    loadModify = 1.9;
-                    fuelModify = 0.5;
+                    
+                    fuelModify = 0.75;
                     break;
             }
         }
@@ -50,12 +50,7 @@ namespace Space_Game
             fuelConsumption = baseFuel * fuelModify;
 
         }
-        public void Capacity()
-        {
-            const double baseLoad = 100;
-            loadCapacity = baseLoad * loadModify;
-        }
-
+       
 
         
     }
