@@ -46,9 +46,9 @@ namespace Space_Game
         public void ItemChange(int howMany, char what) => goodsQuantity[what] += howMany;
 
 
-       
+
     }
-        
-    
+
+
 }
-       
+

@@ -72,7 +72,7 @@ namespace Space_Game
         public void PlayerStats()
         {
             Console.WriteLine($"You are {currentAge} years old ");
-            Console.WriteLine($"You currently have a fortune of ${currentMoney}");
+            Console.WriteLine($"You currently have a fortune of {currentMoney.ToString("C2")}");
             Console.WriteLine($"Your fuel level is {currentfuelLevel}");
         }
     }

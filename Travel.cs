@@ -11,33 +11,27 @@ namespace Space_Game
 
         Ship ship;
         Universe galaxy;
-        //PlanetPhase planetPhase = new PlanetPhase();
-       //UserInterface ui = new UserInterface();
 
         public double travelTime;
         public double fuelCost;
         public static double travelDistance;
 
-        Planet currentPlanet;
+        public Planet currentPlanet;
         Planet goPlanet;
-        public int  moneyGained;
+        public int moneyGained;
 
         ConsoleKeyInfo planetChoice;
         ConsoleKeyInfo confirmation;
         int warpFactor;
-        private int v;
 
         public Travel()
         {
             galaxy = new Universe();
             ship = new Ship();
             currentPlanet = galaxy.earth;
-           // TravelMenu();
-
-
         }
 
-       public void setShip(int age)
+        public void setShip(int age)
         {
             ship.ShipType(age);
             ship.FuelConsumption();
@@ -45,88 +39,103 @@ namespace Space_Game
         }
         public void TravelMenu()
         {
+            Console.Clear();
             Console.WriteLine("Which Planet do you want to go to? ");
             Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Press F1 to go back to MAIN MENU");
             DisplayPlanets();
 
             Console.WriteLine();
             planetChoice = Console.ReadKey();
-
-            Console.WriteLine();
-            PlanetChoice(planetChoice);
-
             Console.WriteLine();
 
-            Console.WriteLine("Press <Enter> to confirm or <Escape> to cancel:");
-            confirmation = Console.ReadKey();
-
-            if (confirmation.Key == ConsoleKey.Enter)
+            if (planetChoice.Key != ConsoleKey.F1)
             {
-                Console.WriteLine("What warp factor would you like to use? :");
-                warpFactor = int.Parse(Console.ReadLine());
-                ship.Speed(warpFactor);
-                MovePlanet();// Calculates the speed, time so user can decide if they want to proceed
-                Console.WriteLine();
-                Console.WriteLine($"At the speed of {ship.velocity} , it will take you " +
-                                  $"{TravelTime(galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate), ship.velocity)}" +
-                                  $" to reach your destination and it will cost you {fuelCost} in fuel");
+                PlanetChoice(planetChoice);
 
-                if (fuelCost > Character.currentfuelLevel)
+
+                Console.WriteLine("Press <Enter> to confirm or <Escape> to cancel:");
+                confirmation = Console.ReadKey();
+                Console.WriteLine();
+                if (confirmation.Key == ConsoleKey.Enter)
                 {
+                    Console.WriteLine("What warp factor would you like to use? :");
+                    try
+                    {
+                        warpFactor = int.Parse(Console.ReadLine());
+                        ship.Speed(warpFactor);
+                    }
+                    catch (System.FormatException)
+                    {
+                        Console.WriteLine("Invalid Input");
+                        TravelMenu();
+                    }
+                    MovePlanet();
                     Console.WriteLine();
-                    Console.WriteLine("You do not have enough fuel to travel that far that fast.");
-                    Console.WriteLine("\nTry to go to a different planet, or buy more fuel");
-                    TravelMenu();
+                    Console.WriteLine($"At the speed of {ship.velocity.ToString("F2")} , it will take you " +
+                                      $"{travelTime.ToString("F2")} Light Years " +
+                                      $" to reach your destination and it will cost you {fuelCost.ToString("F2")} in fuel");
 
-                }
+                    if (fuelCost > Character.currentfuelLevel)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("You do not have enough fuel to travel that far that fast.");
+                        Console.WriteLine("\nTry to go to a different planet, or buy more fuel");
+                        TravelMenu();
 
-                Console.WriteLine("Do you want to proceed? Y/N");
-                var confirm = Console.ReadKey();
-                Console.WriteLine(      );
-                Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Do you want to proceed? Y/N");
+                        var confirm = Console.ReadKey();
+                        Console.WriteLine();
+                        Console.WriteLine();
 
-                if (confirm.Key == ConsoleKey.N)
-                {
-                    travelDistance = 0;
-                    travelTime = 0;
-                    TravelMenu();
+                        if (confirm.Key == ConsoleKey.N)
+                        {
+
+                            TravelMenu();
+                        }
+                        else
+                        {
+
+                            RandomEvent();
+                            currentPlanet = goPlanet;
+
+                        }
+                    }
                 }
                 else
                 {
 
-                    RandomEvent();
-                    currentPlanet = goPlanet;
-
-                   
+                    TravelMenu();
                 }
-
-
             }
             else
             {
-                TravelMenu();
+                Console.Clear();
             }
 
         }
 
         void DisplayPlanets()
         {
-            Console.WriteLine($"1.{galaxy.earth.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.earth.planetCoordinate)} ");
-            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.alphaProxima.planetCoordinate)}");
-            Console.WriteLine($"3.{galaxy.planet3.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet3.planetCoordinate)}");
-            Console.WriteLine($"4.{galaxy.planet4.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet4.planetCoordinate)}");
-            Console.WriteLine($"5.{galaxy.planet5.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet5.planetCoordinate)}");
+            Console.WriteLine($"1.{galaxy.earth.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.earth.planetCoordinate).ToString("F2")} Light Years away");
+            Console.WriteLine($"2.{galaxy.alphaProxima.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.alphaProxima.planetCoordinate).ToString("F2")} Light Years away");
+            Console.WriteLine($"3.{galaxy.planet3.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet3.planetCoordinate).ToString("F2")} Light Years away");
+            Console.WriteLine($"4.{galaxy.planet4.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet4.planetCoordinate).ToString("F2")} Light Years away");
+            Console.WriteLine($"5.{galaxy.planet5.planetName} -- {galaxy.Distance(currentPlanet.planetCoordinate, galaxy.planet5.planetCoordinate).ToString("F2")} Light Years away");
         }
-               
-        
-       
+
+
         public double TravelTime(double distance, double velocity)
         {
-            travelTime = distance / velocity;
+            travelTime = Math.Ceiling(distance / velocity);
             return travelTime;
         }
 
-       
+
         public void PlanetChoice(ConsoleKeyInfo choice)
         {
             UserInterface ui = new UserInterface();
@@ -134,40 +143,44 @@ namespace Space_Game
             {
                 case ConsoleKey.D1:
                     goPlanet = galaxy.earth;
-                   // MovePlanet();
                     break;
+
                 case ConsoleKey.D2:
                     goPlanet = (galaxy.alphaProxima);
-                  //  MovePlanet();
                     break;
+
                 case ConsoleKey.D3:
                     goPlanet = galaxy.planet3;
-                   // MovePlanet();
                     break;
+
                 case ConsoleKey.D4:
                     goPlanet = galaxy.planet4;
-                   // MovePlanet();
                     break;
+
                 case ConsoleKey.D5:
                     goPlanet = galaxy.planet5;
-                   // MovePlanet();
                     break;
+
                 default:
-                    Console.WriteLine( "You are lost in Galaxy forever");
+                    Console.WriteLine("You are lost in Galaxy forever");
+                    Console.WriteLine("Press <Enter> To go back to Travel Menu");
+                    Console.ReadKey();
+                    Console.Clear();
+                    TravelMenu();
                     break;
 
             }
 
         }
-        public  void MovePlanet()
+        public void MovePlanet()
         {
             travelDistance = galaxy.Distance(currentPlanet.planetCoordinate, goPlanet.planetCoordinate);
             TravelTime(travelDistance, ship.velocity);
             var fuel = ship.fuelConsumption * warpFactor;
             fuelCost = galaxy.FuelBetweenPlanet(fuel, travelDistance);
-            
+
         }
-       
+
 
         public void RandomEvent()
         {
@@ -194,20 +207,13 @@ namespace Space_Game
                 Thread.Sleep(2000);
 
             }
-            else if (action == 10)
-            {
-                //free money
-                //normal travel
 
-
-            }
-            
         }
         public void NormalTravel()
         {
             Console.WriteLine("You made your journey with no major incident and thank the Space Gods for smooth sailing.");
-            
-            
+
+
         }
 
         public void SpacePirates()
@@ -220,7 +226,7 @@ namespace Space_Game
             var randomNum = rng.Next(0, 10);
 
 
-            if (input.Key == ConsoleKey.F1 && randomNum%2 != 0)
+            if (input.Key == ConsoleKey.F1 && randomNum % 2 != 0)
             {
                 Console.WriteLine("As you move in for a closer look, a large, black ship appears from behind the derilict spacecraft");
                 bool win = MiniGame();
@@ -233,7 +239,7 @@ namespace Space_Game
                 else
                 {
                     Console.WriteLine("The Pirates bested you but left you alive, they took money to compensate though.");
-                    decimal bill = Character.currentMoney/2;
+                    decimal bill = Character.currentMoney / 2;
                     Character.Profit(bill);
                 }
             }
@@ -258,29 +264,29 @@ namespace Space_Game
             }
             else
             {
-                
+
                 Console.WriteLine("Your decision was favorable and you found some money along the way!");
                 decimal bill = 1000;
                 Character.Profit(bill);
             }
             Console.ForegroundColor = ConsoleColor.White;
-           
+
         }
         public bool MiniGame()
         {
             Random rng = new Random();
 
             var player = rng.Next(0, 100);
-            
+
             Console.WriteLine($"You roll the number {player} ! ");
 
-            Console.WriteLine() ;
+            Console.WriteLine();
 
             var pirates = rng.Next(0, 100);
             Console.WriteLine($"The Pirates roll the number {pirates} !");
 
             bool win;
-             if (player > pirates)
+            if (player > pirates)
             {
                 win = true;
                 Console.WriteLine("You Win!");
@@ -292,7 +298,7 @@ namespace Space_Game
                 Console.WriteLine("You Lose!");
                 return win;
             }
-            
+
 
         }
 

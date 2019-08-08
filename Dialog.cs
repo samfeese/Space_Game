@@ -7,14 +7,10 @@ namespace Space_Game
     static class Dialog
     {
 
-     
+
         public static void StartGameDialog()
         {
-            UserInterface ui = new UserInterface();
-
-            
-
-
+           
             Console.WriteLine();
 
             Console.WriteLine("*BANG* *BANG* *BANG*");
@@ -63,11 +59,6 @@ namespace Space_Game
 
 
         }
-
-
-
-
-
 
     }
 }

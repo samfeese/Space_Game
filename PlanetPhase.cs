@@ -14,20 +14,22 @@ namespace Space_Game
         public int addToInventory;
         public decimal bill;
         public double fuelBuy;
+        int quantity;
 
         public decimal assets;
         public string itemChanged;
+
         public Dictionary<char, decimal> priceValues = new Dictionary<char, decimal>();
-        
+
         decimal itemPrice = 10;
 
         public PlanetPhase()
         {
             goods = new Inventory();
-            //PlanetMenu();
+
             InventoryUpKeep();
         }
-      
+
 
         public void PlanetMenu()
 
@@ -45,11 +47,15 @@ namespace Space_Game
             {
                 case ConsoleKey.D1:
                     ShopBuy();
-                        break;
+                    break;
                 case ConsoleKey.D2:
                     ShopSell();
                     break;
                 case ConsoleKey.Escape:
+                    Console.Clear();
+                    break;
+                default:
+                    PlanetMenu();
                     break;
             }
 
@@ -64,39 +70,36 @@ namespace Space_Game
             priceValues.Add('t', 10);
             priceValues.Add('d', 10);
             priceValues.Add('f', 10);
-        } 
+        }
         public void DisplayGoodsBuy()
         {
 
-
-
-           
             decimal addList;
             addList = itemPrice * RandomMod();
-            Console.WriteLine($"1: {goods.goodsName['s']} - ${addList}");
+            Console.WriteLine($"1: {goods.goodsName['s']} - {addList.ToString("C2")}");
             priceValues['s'] = addList;
 
             addList = itemPrice * RandomMod();
-            Console.WriteLine($"2: {goods.goodsName['l']} - ${addList}");
+            Console.WriteLine($"2: {goods.goodsName['l']} - {addList.ToString("C2")}");
             priceValues['l'] = addList;
 
             addList = itemPrice * RandomMod();
-            Console.WriteLine($"3: {goods.goodsName['b']} - ${addList}");
+            Console.WriteLine($"3: {goods.goodsName['b']} - {addList.ToString("C2")}");
             priceValues['b'] = addList;
 
             addList = itemPrice * RandomMod();
-            Console.WriteLine($"4: {goods.goodsName['t']} - ${addList}");
+            Console.WriteLine($"4: {goods.goodsName['t']} - {addList.ToString("C2")}");
             priceValues['t'] = addList;
 
             addList = itemPrice * RandomMod();
-            Console.WriteLine($"5: {goods.goodsName['d']} - ${addList}");
+            Console.WriteLine($"5: {goods.goodsName['d']} - {addList.ToString("C2")}");
             priceValues['d'] = addList;
 
             addList = 10 * itemPrice * RandomMod();
-            Console.WriteLine($"6: {goods.goodsName['f']} - ${addList}");
+            Console.WriteLine($"6: {goods.goodsName['f']} - {addList.ToString("C2")}");
             priceValues['f'] = addList;
-            
-            
+
+
         }
         public void DisplayGoodsSell()
         {
@@ -106,247 +109,242 @@ namespace Space_Game
             decimal addList;
 
             addList = distanceMod * itemPrice * RandomMod();
-            Console.WriteLine($"1: {goods.goodsName['s']} - ${addList}");
+            Console.WriteLine($"1: {goods.goodsName['s']} - {addList.ToString("C2")}");
             priceValues['s'] = addList;
 
             addList = distanceMod * itemPrice * RandomMod();
-            Console.WriteLine($"2: {goods.goodsName['l']} - ${addList}");
+            Console.WriteLine($"2: {goods.goodsName['l']} - {addList.ToString("C2")}");
             priceValues['l'] = addList;
 
             addList = distanceMod * itemPrice * RandomMod();
-            Console.WriteLine($"3: {goods.goodsName['b']} - ${addList}");
+            Console.WriteLine($"3: {goods.goodsName['b']} - {addList.ToString("C2")}");
             priceValues['b'] = addList;
 
             addList = distanceMod * itemPrice * RandomMod();
-            Console.WriteLine($"4: {goods.goodsName['t']} - ${addList}");
+            Console.WriteLine($"4: {goods.goodsName['t']} - {addList.ToString("C2")}");
             priceValues['t'] = addList;
 
 
             addList = distanceMod * itemPrice * RandomMod();
-            Console.WriteLine($"5: {goods.goodsName['d']} - ${addList}");
+            Console.WriteLine($"5: {goods.goodsName['d']} - {addList.ToString("C2")}");
             priceValues['d'] = addList;
 
-           
+
 
         }
 
         private decimal RandomMod()
         {
             Random rand = new Random();
-            
+
             decimal mod = Convert.ToDecimal(rand.Next(0, 1) + rand.NextDouble());
             return mod;
-           
+
         }
-          
+
 
         public void ShopBuy()
         {
+            Console.Clear();
+
+
             Console.WriteLine("Welcome to my shop");
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Press F1 to go back to MAIN MENU");
 
             Console.WriteLine("\nSelect and item to buy: ");
             Console.WriteLine();
 
-           
+
             DisplayGoodsBuy();
 
             Console.WriteLine();
-            Console.WriteLine($"Your current fortune is ${Character.currentMoney}");
+            Console.WriteLine($"Your current fortune is {Character.currentMoney.ToString("C2")}");
             var input = Console.ReadKey();
+
 
             Console.WriteLine();
 
-            Console.WriteLine("How many?");
-            
-            var quanity = int.Parse(Console.ReadLine());
+           
 
-
-         
 
             bill = 0;
             fuelBuy = 0;
-            
-          
-            char temp;
+            quantity = 0;
 
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    temp = 's';
-                    if (Character.currentMoney < (quanity * priceValues[temp]))
-                    {
-                        Console.WriteLine("You do not have enough money you dummy, take math again.");
-                        break;
-                    }
-                    goods.ItemChange(quanity, 's');
-                   
-                    bill = (-1) * (quanity * priceValues[temp]);
+                    Buy('s');
                     break;
-                  
 
                 case ConsoleKey.D2:
-                    temp = 'l';
-                    if (Character.currentMoney < (quanity * priceValues[temp]))
-                    {
-                        Console.WriteLine("You do not have enough money you dummy, take math again.");
-                        break;
-                    }
-                    goods.ItemChange(quanity, 'l');
-                  
-
-                    bill = (-1) * (quanity * priceValues[temp]);
+                    Buy('l');
                     break;
-                 
+
                 case ConsoleKey.D3:
-                    temp = 'b';
-                    if (Character.currentMoney < (quanity * priceValues[temp]))
-                    {
-                        Console.WriteLine("You do not have enough money you dummy, take math again.");
-                        break;
-                    }
-                    goods.ItemChange(quanity, 'b');
-                 
-                    bill = (-1) * (quanity * priceValues[temp]);
+                    Buy('b');
                     break;
 
                 case ConsoleKey.D4:
-                    temp = 't';
-                    if (Character.currentMoney < (quanity * priceValues[temp]))
-                    {
-                        Console.WriteLine("You do not have enough money you dummy, take math again.");
-                        break;
-                    }
-                    goods.ItemChange(quanity, 't');
-                   
-                    bill = (-1) * (quanity * priceValues[temp]);
+                    Buy('t');
                     break;
+
                 case ConsoleKey.D5:
-                    temp = 'd';
-                    if (Character.currentMoney < (quanity * priceValues[temp]))
-                    {
-                        Console.WriteLine("You do not have enough money you dummy, take math again.");
-                        break;
-                    }
-                    goods.ItemChange(quanity, 'd');
-                  
-                    bill = (-1) * (quanity * priceValues[temp]);
+                    Buy('d');
                     break;
+
                 case ConsoleKey.D6:
-                    temp = 'f';
-                    if (Character.currentMoney < (quanity * priceValues[temp]))
-                    {
-                        Console.WriteLine("You do not have enough money you dummy, take math again.");
-                        break;
-                    }
-                    goods.ItemChange(quanity, 'f');
-            
-                    bill = (-1) * (quanity * priceValues[temp]);
-                    fuelBuy = quanity;
+                    Buy('f');
+                    fuelBuy = quantity;
                     break;
+
+                case ConsoleKey.F1:
+                    break;
+
                 default:
-                  
+                    Console.Clear();
+                    ShopBuy();
                     break;
             }
-            Console.WriteLine($"Your total is {bill}");
-            Character.Profit(bill);
+
+
+            Console.Clear();
+        }
+
+
+        private void Buy( char temp)
+        {
+         
+
+            Console.WriteLine("How many?");
+
+            var valid = int.TryParse(Console.ReadLine(), out quantity);
+
+            while (!valid)
+            {
+
+                Console.WriteLine("\bInvalid Input\n");
+                Console.Write("Please try again.......");
+                valid = int.TryParse(Console.ReadLine(), out quantity);
+            }
+            if (Character.currentMoney < (quantity * priceValues[temp]))
+            {
+                Console.WriteLine("You do not have enough money you dummy, take math again.");
+
+            }
+            else
+            {
+                goods.ItemChange(quantity, temp);
+
+                bill = (-1) * (quantity * priceValues[temp]);
+
+                Console.WriteLine($"Your total is {bill.ToString("C2")}");
+
+                Character.Profit(bill);
+
+            }
 
             Console.WriteLine("Do you wanna buy more items? Y/N");
             var choice = Console.ReadKey();
-            
+
             if (choice.Key == ConsoleKey.Y)
             {
                 ShopBuy();
             }
-           
-        }
 
+        }
         public void ShopSell()
         {
+            Console.Clear();
+
+          
 
             Console.WriteLine("Welcome to my shop");
-
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Press F1 to go back to MAIN MENU");
             Console.WriteLine("\nSelect and item to sell: ");
             Console.WriteLine();
-           
+
             DisplayMyInventory();
             Console.WriteLine();
             Console.WriteLine();
+
             Console.WriteLine("Pick the item you want to sell :");
+
             DisplayGoodsSell();
+
             var input = Console.ReadKey();
             Console.WriteLine();
-            Console.WriteLine("How many?");
-            var quanity = int.Parse(Console.ReadLine());
+
             bill = 0;
-            char temp;
+            quantity = 0;
+
             switch (input.Key)
             {
                 case ConsoleKey.D1:
-                    temp = 's';
-                    if (goods.goodsQuantity[temp] < quanity)
-                    {
-                        Console.WriteLine("You dont have enought to sell try again.");
-                        break;
-                    }
-
-
-                    goods.ItemChange((quanity * (-1)), 's');
-                   
-                    bill = (quanity * priceValues[temp]);
+                    Sell('s');
                     break;
 
                 case ConsoleKey.D2:
-                    temp = 'l';
-                    if (goods.goodsQuantity[temp] < quanity)
-                    {
-                        Console.WriteLine("You dont have enought to sell try again.");
-                        break;
-                    }
-                    goods.ItemChange((quanity * (-1)), 'l');
-                   
-                    bill = (quanity * priceValues[temp]);
+                    Sell('l');
                     break;
 
                 case ConsoleKey.D3:
-                    temp = 'b';
-                    if (goods.goodsQuantity[temp] < quanity)
-                    {
-                        Console.WriteLine("You dont have enought to sell try again.");
-                        break;
-                    }
-                    goods.ItemChange((quanity * (-1)), 'b');
-                  
-                    bill = (quanity * priceValues[temp]);
+                    Sell('b');
                     break;
 
                 case ConsoleKey.D4:
-                    temp = 't';
-                    if (goods.goodsQuantity[temp] < quanity)
-                    {
-                        Console.WriteLine("You dont have enought to sell try again.");
-                        break;
-                    }
-                    goods.ItemChange((quanity * (-1)), 't');
-                  
-                    bill = (quanity * priceValues[temp]);
+                    Sell('t');
                     break;
-                case ConsoleKey.D5:
-                    temp = 'd';
 
-                    if (goods.goodsQuantity[temp] < quanity)
-                    {
-                        Console.WriteLine("You dont have enought to sell try again.");
-                        break;
-                    }
-                    goods.ItemChange((quanity * (-1)), 'd');
-                    bill = (quanity * priceValues[temp]);
+                case ConsoleKey.D5:
+                    Sell('d');
                     break;
+
+                case ConsoleKey.F1:
+                    break;
+
                 default:
+                    Console.Clear();
+                    ShopSell();
 
                     break;
             }
-            Console.WriteLine($"Your total is {bill}");
-            Character.Profit(bill);
+
+            Console.Clear();
+
+        }
+
+        void Sell(char temp)
+        {
+
+            Console.WriteLine("How many?");
+            var valid = int.TryParse(Console.ReadLine(), out quantity);
+
+            while (!valid)
+            {
+
+                Console.WriteLine("\bInvalid Input\n");
+                Console.Write("Please enter quantity again.......");
+                valid = int.TryParse(Console.ReadLine(), out quantity);
+            }
+
+            if (goods.goodsQuantity[temp] < quantity)
+            {
+                Console.WriteLine("You dont have enought to sell try again.");
+            }
+
+            else
+            {
+                goods.ItemChange((quantity * (-1)), 's');
+
+                bill = (quantity * priceValues[temp]);
+
+                Console.WriteLine($"Your total is {bill.ToString("C2")}");
+                Character.Profit(bill);
+
+            }
 
             Console.WriteLine("Do you wanna sell more items? Y/N");
             var choice = Console.ReadKey();
@@ -355,14 +353,13 @@ namespace Space_Game
             {
                 ShopSell();
             }
-            
         }
 
         public void InventoryUpKeep()
         {
             myGoods = goods.goodsName;
             myLoad = goods.goodsQuantity;
-            //DisplayMyInventory();
+
         }
 
         public void DisplayMyInventory()
@@ -374,17 +371,16 @@ namespace Space_Game
             Console.WriteLine($"4: {myGoods['t']} - {myLoad['t']}");
             Console.WriteLine($"5: {myGoods['d']} - {myLoad['d']}");
 
-            var a= myLoad['s'] * priceValues['s'];
-            var b= myLoad['l'] * priceValues['l'];
-            var c= myLoad['b'] * priceValues['b'];
-            var d= myLoad['t'] * priceValues['t'];
-            var e= myLoad['d'] * priceValues['d'];
+            var a = myLoad['s'] * priceValues['s'];
+            var b = myLoad['l'] * priceValues['l'];
+            var c = myLoad['b'] * priceValues['b'];
+            var d = myLoad['t'] * priceValues['t'];
+            var e = myLoad['d'] * priceValues['d'];
 
             assets = (a + b + c + d + e);
 
-            //Console.WriteLine($"The value of my inventory is ${assets}");
 
         }
-       
+
     }
 }

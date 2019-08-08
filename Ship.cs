@@ -6,33 +6,33 @@ namespace Space_Game
 {
     class Ship
     {
-      
+
         public double velocity;
-       
+
         public double fuelConsumption;
-        
+
         public double speedModify;
-       
+
         public double fuelModify;
-       
+
         public void ShipType(int age)
         {
-           
+
             switch (age)
             {
                 case 18:
                     speedModify = 1.1;
-                    
+
                     fuelModify = 1;
                     break;
                 case 22:
                     speedModify = 1.5;
-                    
+
                     fuelModify = 0.85;
                     break;
                 case 26:
                     speedModify = 1.9;
-                    
+
                     fuelModify = 0.75;
                     break;
             }
@@ -50,8 +50,8 @@ namespace Space_Game
             fuelConsumption = baseFuel * fuelModify;
 
         }
-       
 
-        
+
+
     }
 }

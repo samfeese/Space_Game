@@ -23,7 +23,7 @@ namespace Space_Game
             alphaProxima = new Planet("Alpha Proxima", PlanetAplha());
         }
 
-        private  (double, double) PlanetAplha()
+        private (double, double) PlanetAplha()
         {
             double randomAngle = random.Next(0, 359);
 
